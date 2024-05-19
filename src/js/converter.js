@@ -2,18 +2,15 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const upload = document.getElementById('upload');
 const message = document.getElementById('message');
-const convertToPngBtn = document.getElementById('convert-to-png');
-const convertToJpegBtn = document.getElementById('convert-to-jpeg');
-const convertToBmpBtn = document.getElementById('convert-to-bmp');
-const convertToGifBtn = document.getElementById('convert-to-gif');
-const convertToWebpBtn = document.getElementById('convert-to-webp');
-const convertToTiffBtn = document.getElementById('convert-to-tiff');
 const downloadBtn = document.getElementById('download-btn');
+const formatLabel = document.createElement('div');
+formatLabel.id = 'format-label';
+downloadBtn.parentNode.insertBefore(formatLabel, downloadBtn);
 let img = new Image();
 let convertedImageDataURL = '';
 let activeBtn = null;
 
-const MIN_IMAGE_DIMENSION = 100; // Minimum dimension for width and height
+const MIN_IMAGE_DIMENSION = 100;
 
 upload.addEventListener('change', (e) => {
     const reader = new FileReader();
@@ -32,53 +29,83 @@ upload.addEventListener('change', (e) => {
                 message.style.display = 'none';
                 enableButtons();
             }
-        }
+        };
         img.src = event.target.result;
-    }
+    };
     reader.readAsDataURL(e.target.files[0]);
 });
 
 function convertImage(format, button) {
-    if (activeBtn) {
-        activeBtn.classList.remove('active');
-    }
-    button.classList.add('active');
-    activeBtn = button;
-
     convertedImageDataURL = canvas.toDataURL(`image/${format}`);
     downloadBtn.disabled = false;
+    setActiveButton(button);
+    updateFormatLabel(format);
 }
 
-convertToPngBtn.addEventListener('click', () => convertImage('png', convertToPngBtn));
-convertToJpegBtn.addEventListener('click', () => convertImage('jpeg', convertToJpegBtn));
-convertToBmpBtn.addEventListener('click', () => convertImage('bmp', convertToBmpBtn));
-convertToGifBtn.addEventListener('click', () => convertImage('gif', convertToGifBtn));
-convertToWebpBtn.addEventListener('click', () => convertImage('webp', convertToWebpBtn));
-convertToTiffBtn.addEventListener('click', () => convertImage('tiff', convertToTiffBtn));
+function setActiveButton(button) {
+    if (activeBtn && activeBtn !== button) {
+        activeBtn.classList.remove('active');
+    }
+    if (activeBtn !== button) {
+        button.classList.add('active');
+        activeBtn = button;
+    }
+}
+
+function addConversionEventListeners() {
+    const buttons = document.querySelectorAll('#formats button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const format = button.textContent.split(' ')[2].toLowerCase();
+            convertImage(format, button);
+        });
+    });
+}
+
+function updateFormatLabel(format) {
+    formatLabel.textContent = `Selected output format: ${format.toUpperCase()}`;
+    formatLabel.style.marginTop = '10px';
+}
+
+addConversionEventListeners();
 
 downloadBtn.addEventListener('click', () => {
-    const link = document.createElement('a');
-    link.download = `converted-image.${activeBtn.textContent.split(' ')[2].toLowerCase()}`;
-    link.href = convertedImageDataURL;
-    link.click();
+    if (activeBtn) {
+        const format = activeBtn.textContent.split(' ')[2].toLowerCase();
+        const link = document.createElement('a');
+        link.download = `converted-image.${format}`;
+        link.href = convertedImageDataURL;
+        link.click();
+    }
 });
 
 function enableButtons() {
-    convertToPngBtn.disabled = false;
-    convertToJpegBtn.disabled = false;
-    convertToBmpBtn.disabled = false;
-    convertToGifBtn.disabled = false;
-    convertToWebpBtn.disabled = false;
-    convertToTiffBtn.disabled = false;
+    document.querySelectorAll('#formats button').forEach(button => {
+        button.disabled = false;
+    });
     downloadBtn.disabled = true;
 }
 
 function disableButtons() {
-    convertToPngBtn.disabled = true;
-    convertToJpegBtn.disabled = true;
-    convertToBmpBtn.disabled = true;
-    convertToGifBtn.disabled = true;
-    convertToWebpBtn.disabled = true;
-    convertToTiffBtn.disabled = true;
+    document.querySelectorAll('#formats button').forEach(button => {
+        button.disabled = true;
+    });
     downloadBtn.disabled = true;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+});
+
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        localStorage.setItem('darkMode', 'disabled');
+    }
 }

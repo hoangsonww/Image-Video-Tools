@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f8fa;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#navbar {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+#navbar a:hover {
+    text-decoration: underline;
+}
+
+#navbar .title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    flex-direction: column;
+}
+
+#about-content {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode #about-content {
+    background-color: #333;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #navbar .title {
+        margin-bottom: 10px;
+    }
+
+    #navbar div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #navbar a {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    #about-content {
+        width: 90%;
+    }
+}
+
+#backHomeBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    border-radius: 8px;
+}
+
+#backHomeBtn:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+#dark-mode-toggle {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 18px !important;
+    transition: background-color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #0056b3;
+}
+
+#gitHubLink {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode #gitHubLink {
+    color: white;
+}
+
+#gitHubLink:hover {
+    color: orangered;
+}
+
+#gitHubLink1 {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode #gitHubLink1 {
+    color: white;
+}
+
+#gitHubLink1:hover {
+    color: orangered;
+}

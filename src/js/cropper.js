@@ -1,3 +1,21 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+});
+
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+    }
+    else {
+        localStorage.setItem('darkMode', 'disabled');
+    }
+}
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const upload = document.getElementById('upload');
@@ -9,6 +27,7 @@ let startX, startY, endX, endY;
 let animationFrameId;
 
 const MIN_IMAGE_DIMENSION = 700;
+const MIN_CANVAS_DIMENSION = 700;
 
 upload.addEventListener('change', (e) => {
     const reader = new FileReader();
@@ -21,7 +40,7 @@ upload.addEventListener('change', (e) => {
                 downloadBtn.disabled = true;
             } else {
                 const ratio = img.width / img.height;
-                canvas.width = Math.min(window.innerWidth * 0.9, img.width);
+                canvas.width = Math.max(Math.min(window.innerWidth * 0.9, img.width), MIN_CANVAS_DIMENSION);
                 canvas.height = canvas.width / ratio;
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                 canvas.style.display = 'block';
