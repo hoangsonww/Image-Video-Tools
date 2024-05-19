@@ -179,7 +179,7 @@ We welcome contributions to improve this application. Please follow these steps:
    ```bash
    git push origin feature-branch
    ```
-5. Open a pull request on GitHub.
+5. Open a pull request on GitHub if you would like to propose your changes.
 
 ## License
 
@@ -195,4 +195,4 @@ If you have any questions or feedback, feel free to [contact me](https://github.
 
 ---
 
-Created with ❤️ by [Son Nguyen](https://github.com/hoangsonww) in 2024.
+Created with ❤️ by [Son Nguyen](https://github.com/hoangsonww) in 2024. Thank you for visiting! 🚀
