@@ -5,18 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device=width, initial-scale=1.0">
     <title>Image & Video Tools: Unleash the Power of Media</title>
-    <script src="../js/resizer.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <style>
-        #rotation-container {
+        #container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 95vw;
+            margin: 10px auto;
+            max-width: calc(100vw - 20px);
+            gap: 20px;
+        }
+
+        #controls {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
-            max-width: 100%;
-            width: 90vw;
-            overflow: hidden;
+            max-width: 30%;
+        }
+
+        #preview {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 70%;
         }
 
         #upload {
@@ -24,24 +40,53 @@
         }
 
         canvas {
-            border: 1px solid black;
             max-width: 100%;
             max-height: 100%;
             display: none;
         }
 
-        #rotate-btn, #download-btn {
-            margin-top: 20px;
+        button {
+            margin-top: 10px;
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
             font: inherit;
+            width: 100%;
         }
 
-        #rotate-btn:hover, #download-btn:hover {
+        button:hover {
             background-color: #0056b3;
+        }
+
+        #message {
+            margin-top: 20px;
+            color: red;
+        }
+
+        .active {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            #container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #controls {
+                max-width: 100%;
+            }
+
+            #preview {
+                max-width: 100%;
+            }
+
+            button {
+                width: auto;
+            }
         }
     </style>
 </head>
@@ -54,7 +99,7 @@
     <div>
         <a href="../../index.html">Image Resizer</a>
         <a href="cropper.html">Image Cropper</a>
-        <a href="rotator.html" style="color: orangered; text-decoration: underline">Image Rotator</a>
+        <a href="rotator.html" class="active">Image Rotator</a>
         <a href="filter.html">Image Filters</a>
         <a href="converter.html">Image Converter</a>
         <a href="thumbnail-generator.html">Thumbnail Generator</a>
@@ -62,12 +107,18 @@
     </div>
 </div>
 <div id="container">
-    <div id="rotation-container">
+    <div id="controls">
+        <p><strong>Image Rotator & Flipper</strong></p>
         <input type="file" id="upload" accept="image/*">
-        <canvas id="canvas" width="500" height="500"></canvas>
-        <p id="message">Please upload an image to enable rotation.</p>
+        <p id="message">Please upload an image to enable rotation and flipping.</p>
         <button id="rotate-btn" disabled>Rotate Image</button>
-        <button id="download-btn" disabled>Download Rotated Image</button>
+        <button id="flip-horizontal-btn" disabled>Flip Horizontal</button>
+        <button id="flip-vertical-btn" disabled>Flip Vertical</button>
+        <button id="download-btn" disabled>Download Image</button>
+    </div>
+    <div id="preview">
+        <p><strong>Preview</strong></p>
+        <canvas id="canvas"></canvas>
     </div>
 </div>
 
@@ -76,12 +127,16 @@
     const ctx = canvas.getContext('2d');
     const upload = document.getElementById('upload');
     const rotateBtn = document.getElementById('rotate-btn');
+    const flipHorizontalBtn = document.getElementById('flip-horizontal-btn');
+    const flipVerticalBtn = document.getElementById('flip-vertical-btn');
     const downloadBtn = document.getElementById('download-btn');
     const message = document.getElementById('message');
     let img = new Image();
-    let rotationAngle = 0;
+    let rotationAngle = 0; // Angle in degrees
+    let flipH = false; // Horizontal flip
+    let flipV = false; // Vertical flip
 
-    const MIN_IMAGE_DIMENSION = 100;
+    const MIN_IMAGE_DIMENSION = 100; // Minimum dimension for width and height
 
     upload.addEventListener('change', (e) => {
         const reader = new FileReader();
@@ -92,16 +147,21 @@
                     canvas.style.display = 'none';
                     message.style.display = 'block';
                     rotateBtn.disabled = true;
+                    flipHorizontalBtn.disabled = true;
+                    flipVerticalBtn.disabled = true;
                     downloadBtn.disabled = true;
-                }
-                else {
-                    rotationAngle = 0;
+                } else {
+                    rotationAngle = 0; // Reset rotation angle
+                    flipH = false; // Reset horizontal flip
+                    flipV = false; // Reset vertical flip
                     canvas.width = img.width;
                     canvas.height = img.height;
                     ctx.drawImage(img, 0, 0);
                     canvas.style.display = 'block';
                     message.style.display = 'none';
                     rotateBtn.disabled = false;
+                    flipHorizontalBtn.disabled = false;
+                    flipVerticalBtn.disabled = false;
                     downloadBtn.disabled = false;
                 }
             }
@@ -112,17 +172,26 @@
 
     rotateBtn.addEventListener('click', () => {
         rotationAngle = (rotationAngle + 90) % 360;
-        drawRotatedImage();
+        drawTransformedImage();
     });
 
-    function drawRotatedImage() {
+    flipHorizontalBtn.addEventListener('click', () => {
+        flipH = !flipH;
+        drawTransformedImage();
+    });
+
+    flipVerticalBtn.addEventListener('click', () => {
+        flipV = !flipV;
+        drawTransformedImage();
+    });
+
+    function drawTransformedImage() {
         const tempCanvas = document.createElement('canvas');
         const tempCtx = tempCanvas.getContext('2d');
         if (rotationAngle % 180 === 0) {
             tempCanvas.width = img.width;
             tempCanvas.height = img.height;
-        }
-        else {
+        } else {
             tempCanvas.width = img.height;
             tempCanvas.height = img.width;
         }
@@ -131,6 +200,7 @@
         tempCtx.save();
         tempCtx.translate(tempCanvas.width / 2, tempCanvas.height / 2);
         tempCtx.rotate(rotationAngle * Math.PI / 180);
+        tempCtx.scale(flipH ? -1 : 1, flipV ? -1 : 1);
         tempCtx.drawImage(img, -img.width / 2, -img.height / 2);
         tempCtx.restore();
 
@@ -142,11 +212,10 @@
 
     downloadBtn.addEventListener('click', () => {
         const link = document.createElement('a');
-        link.download = 'rotated-image.png';
+        link.download = 'transformed-image.png';
         link.href = canvas.toDataURL();
         link.click();
     });
 </script>
 </body>
-
 </html>
