@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device=width, initial-scale=1.0">
+    <title>Image & Video Tools: Unleash the Power of Media</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 95vw;
+            max-width: calc(100vw - 20px);
+            margin: 10px auto;
+            gap: 20px;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        #controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 30%;
+        }
+
+        #preview {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 70%;
+        }
+
+        #output-video {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+
+        #upload {
+            margin-bottom: 20px;
+        }
+
+        #process-btn,
+        #download-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        #process-btn:hover,
+        #download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            margin-top: 10px;
+            font-size: 16px;
+            color: green;
+        }
+
+        .spinner {
+            margin-top: 10px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #007bff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .progress {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #007bff;
+            width: 0;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        @media (max-width: 768px) {
+            #container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #controls {
+                max-width: 100%;
+            }
+
+            #preview {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="navbar">
+    <a id="header-link" href="../../index.html">
+        <span class="title">Image & Video Tools</span>
+    </a>
+    <div>
+        <a href="#">Image Resizer</a>
+        <a href="cropper.html">Image Cropper</a>
+        <a href="rotator.html">Image Rotator</a>
+        <a href="filter.html">Image Filters</a>
+        <a href="converter.html">Image Converter</a>
+        <a href="thumbnail.html">Thumbnail Generator</a>
+        <a href="remove-audio.html">Video Sound Remover</a>
+    </div>
+</div>
+<div id="container">
+    <div id="controls">
+        <p><strong>Remove Audio from Video</strong></p>
+        <input type="file" id="upload" accept="video/*">
+        <p id="upload-message">Please upload a video to remove its audio.</p>
+        <button id="process-btn" disabled>Remove Audio</button>
+        <div id="spinner" class="spinner" style="display: none;"></div>
+        <div class="progress">
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+            <p id="progress-text">0%</p>
+        </div>
+        <button id="download-btn" disabled>Download Video</button>
+        <p id="message"></p>
+    </div>
+    <div id="preview">
+        <p><strong>Preview</strong></p>
+        <video id="output-video" controls></video>
+    </div>
+</div>
+
+<script>
+    const upload = document.getElementById('upload');
+    const uploadMessage = document.getElementById('upload-message');
+    const processBtn = document.getElementById('process-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const spinner = document.getElementById('spinner');
+    const outputVideo = document.getElementById('output-video');
+    const message = document.getElementById('message');
+    const progress = document.querySelector('.progress');
+    const progressBarFill = document.querySelector('.progress-bar-fill');
+    const progressText = document.getElementById('progress-text');
+    let processedVideoBlob = null;
+
+    upload.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('video/')) {
+            const url = URL.createObjectURL(file);
+            outputVideo.src = url;
+            uploadMessage.style.display = 'none';
+            processBtn.disabled = false;
+        } else {
+            alert('Please upload a valid video file.');
+        }
+    });
+
+    processBtn.addEventListener('click', async () => {
+        processBtn.disabled = true;
+        spinner.style.display = 'block';
+        progress.style.display = 'flex';
+        message.textContent = '';
+        progressText.textContent = '0%';
+        progressBarFill.style.width = '0%';
+
+        try {
+            const file = upload.files[0];
+            const videoURL = URL.createObjectURL(file);
+            const videoElement = document.createElement('video');
+
+            videoElement.src = videoURL;
+            await videoElement.play();
+
+            const stream = videoElement.captureStream();
+            const audioTracks = stream.getAudioTracks();
+            audioTracks.forEach(track => track.stop());
+
+            const mediaRecorder = new MediaRecorder(stream);
+            const chunks = [];
+
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    chunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                processedVideoBlob = new Blob(chunks, { type: 'video/webm' });
+                const processedUrl = URL.createObjectURL(processedVideoBlob);
+                outputVideo.src = processedUrl;
+                message.textContent = 'Audio Removed';
+                downloadBtn.disabled = false;
+                spinner.style.display = 'none';
+                progress.style.display = 'none';
+            };
+
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    chunks.push(event.data);
+                    const percentComplete = ((chunks.length / (stream.getVideoTracks()[0].getSettings().frameRate * videoElement.duration)) * 100).toFixed(2);
+                    progressText.textContent = `${percentComplete}%`;
+                    progressBarFill.style.width = `${percentComplete}%`;
+                }
+            };
+
+            mediaRecorder.start(100); // Collect data every 100ms
+            videoElement.onended = () => {
+                mediaRecorder.stop();
+            };
+        } catch (error) {
+            console.error(error);
+            spinner.style.display = 'none';
+            progress.style.display = 'none';
+            message.textContent = 'Error processing video.';
+        }
+    });
+
+    downloadBtn.addEventListener('click', () => {
+        if (processedVideoBlob) {
+            const url = URL.createObjectURL(processedVideoBlob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'video_without_audio.webm';
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    });
+</script>
+</body>
+</html>
