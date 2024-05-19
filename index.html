@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image & Video Tools: Unleash the Power of Media</title>
+    <script src="src/js/resizer.js"></script>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+
+<body>
+    <div id="navbar">
+        <a id="header-link" href="index.html">
+            <span class="title">Image & Video Tools</span>
+        </a>
+        <div>
+            <a href="#">Image Resizer</a>
+            <a href="src/html/cropper.html">Image Cropper</a>
+            <a href="#">Image Rotator</a>
+            <a href="#">Image Filters</a>
+            <a href="#">Image Converter</a>
+            <a href="#">Thumbnail Generator</a>
+            <a href="#">Video Sound Remover</a>
+        </div>
+    </div>
+    <div id="container">
+        <div id="inputSection">
+            <p><strong>Choose an image to resize:</strong></p>
+            <input type="file" id="imageInput" accept="image/*">
+            <p><strong>Select your desired dimensions:</strong></p>
+            <div id="dimensionsInput">
+                <label for="width">Width:</label>
+                <input type="number" id="width" value="300">
+                <label for="height">Height:</label>
+                <input type="number" id="height" value="300">
+                <input type="checkbox" id="aspectRatio" checked>
+                <label for="aspectRatio">Maintain Aspect Ratio</label>
+            </div>
+            <p id="imageSizeDisplay"><strong>Estimated Image Size:</strong> <span id="currentImageSize">0 KB</span></p>
+            <button onclick="resizeImage()" style="font: inherit">Resize Image</button>
+        </div>
+        <div id="previewSection">
+            <p id="previewTitle">Live Preview</p>
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
