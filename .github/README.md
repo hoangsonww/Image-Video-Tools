@@ -1,11 +1,13 @@
 # Image & Video Tools: Unleash the Power of Media
 
-📸 Welcome to the Image & Video Tools application. This application provides a suite of tools for manipulating images and videos directly in your browser. Below you will find detailed instructions on how to use each tool and information on the available features.
+📸 Welcome to the Image & Video Tools application. This application is current live [here](https://hoangsonww.github.io/Image-Video-Tools/), which provides a suite of tools for manipulating images and videos directly in your browser. Below you will find detailed instructions on how to use each tool and information on the available features.
 
 ## User Interface
 
 <p align="center">
-   <img src="../assets/UI.PNG" alt="Image & Video Tools User Interface" width="100%" style="border-radius: 8px"
+   <a href="https://hoangsonww.github.io/Image-Video-Tools/">
+      <img src="../assets/UI.PNG" alt="Image & Video Tools User Interface" width="100%" style="border-radius: 8px">
+   </a>
 </p>
 
 

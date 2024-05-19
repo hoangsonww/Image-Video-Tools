@@ -81,6 +81,30 @@ body.dark-mode {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+#gitHubLink {
+    color: black;
+}
+
+body.dark-mode #gitHubLink {
+    color: white;
+}
+
+#gitHubLink:hover {
+    color: orangered;
+}
+
+#gitHubLink1 {
+    color: black;
+}
+
+body.dark-mode #gitHubLink1 {
+    color: white;
+}
+
+#gitHubLink1:hover {
+    color: orangered;
+}
+
 #previewSection {
     width: 67%;
     padding: 20px;
