@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    width: 95vw;
+    width: 90vw;
     margin: 10px auto;
     max-width: calc(100vw - 20px);
     gap: 20px;
