@@ -2,15 +2,6 @@
 
 📸 Welcome to the Image & Video Tools application. This application is current live [here](https://hoangsonww.github.io/Image-Video-Tools/), which provides a suite of tools for manipulating images and videos directly in your browser. Below you will find detailed instructions on how to use each tool and information on the available features.
 
-## User Interface
-
-<p align="center">
-   <a href="https://hoangsonww.github.io/Image-Video-Tools/">
-      <img src="../assets/UI.PNG" alt="Image & Video Tools User Interface" width="100%" style="border-radius: 8px">
-   </a>
-</p>
-
-
 ## Table of Contents
 
 1. [User Interface](#user-interface)
@@ -31,6 +22,14 @@
     - [Tool-Specific Instructions](#tool-specific-instructions)
 6. [Contributing](#contributing)
 7. [License](#license)
+
+## User Interface
+
+<p align="center">
+   <a href="https://hoangsonww.github.io/Image-Video-Tools/">
+      <img src="../assets/UI.PNG" alt="Image & Video Tools User Interface" width="100%" style="border-radius: 8px">
+   </a>
+</p>
 
 ## Introduction
 
