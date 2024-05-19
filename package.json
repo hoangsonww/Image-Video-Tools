@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "ffmpeg.js": "^4.1.0",
-    "live-server": "^1.1.0"
+    "live-server": "^1.2.2"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
