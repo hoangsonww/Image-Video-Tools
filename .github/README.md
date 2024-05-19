@@ -180,7 +180,11 @@ We welcome contributions to improve this application. Please follow these steps:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details. 
+
+**NOTE: Direct copying of this project is not prohibited for any purpose.** 
+
+I have spent a lot of time and effort to create this project, so I would appreciate it if you do not copy it directly. So, feel free to fork and contribute to this project.
 
 ## Contact
 
