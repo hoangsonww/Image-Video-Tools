@@ -4,8 +4,10 @@ const upload = document.getElementById('upload');
 const message = document.getElementById('message');
 const downloadBtn = document.getElementById('download-btn');
 const formatLabel = document.createElement('div');
+
 formatLabel.id = 'format-label';
 downloadBtn.parentNode.insertBefore(formatLabel, downloadBtn);
+
 let img = new Image();
 let convertedImageDataURL = '';
 let activeBtn = null;
@@ -21,7 +23,8 @@ upload.addEventListener('change', (e) => {
                 canvas.style.display = 'none';
                 message.style.display = 'block';
                 disableButtons();
-            } else {
+            }
+            else {
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);
@@ -38,6 +41,7 @@ upload.addEventListener('change', (e) => {
 function convertImage(format, button) {
     convertedImageDataURL = canvas.toDataURL(`image/${format}`);
     downloadBtn.disabled = false;
+
     setActiveButton(button);
     updateFormatLabel(format);
 }
@@ -46,6 +50,7 @@ function setActiveButton(button) {
     if (activeBtn && activeBtn !== button) {
         activeBtn.classList.remove('active');
     }
+
     if (activeBtn !== button) {
         button.classList.add('active');
         activeBtn = button;
@@ -54,6 +59,7 @@ function setActiveButton(button) {
 
 function addConversionEventListeners() {
     const buttons = document.querySelectorAll('#formats button');
+
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             const format = button.textContent.split(' ')[2].toLowerCase();
@@ -83,6 +89,7 @@ function enableButtons() {
     document.querySelectorAll('#formats button').forEach(button => {
         button.disabled = false;
     });
+
     downloadBtn.disabled = true;
 }
 
@@ -90,6 +97,7 @@ function disableButtons() {
     document.querySelectorAll('#formats button').forEach(button => {
         button.disabled = true;
     });
+
     downloadBtn.disabled = true;
 }
 
@@ -105,7 +113,8 @@ function toggleDarkMode() {
 
     if (body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
-    } else {
+    }
+    else {
         localStorage.setItem('darkMode', 'disabled');
     }
 }

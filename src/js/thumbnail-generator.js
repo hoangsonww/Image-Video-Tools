@@ -25,6 +25,7 @@ const generateThumbnailBtn = document.getElementById('generate-thumbnail-btn');
 const downloadBtn = document.getElementById('download-btn');
 const thumbnailsContainer = document.getElementById('thumbnails');
 const timestampInput = document.getElementById('timestamp');
+
 let videoElement = document.createElement('video');
 let selectedThumbnail = null;
 let thumbnailTimes = [];
@@ -32,6 +33,7 @@ let currentThumbnailIndex = 0;
 
 upload.addEventListener('change', (e) => {
     const file = e.target.files[0];
+
     if (file && file.type.startsWith('video/')) {
         videoElement.src = URL.createObjectURL(file);
         message.style.display = 'none';
@@ -41,7 +43,8 @@ upload.addEventListener('change', (e) => {
         videoElement.addEventListener('loadeddata', () => {
             console.log('Video metadata loaded');
         });
-    } else {
+    }
+    else {
         alert('Please upload a valid video file.');
     }
 });
@@ -52,9 +55,11 @@ generateThumbnailsBtn.addEventListener('click', () => {
 
 generateThumbnailBtn.addEventListener('click', () => {
     const timestamp = parseFloat(timestampInput.value);
+
     if (isNaN(timestamp) || timestamp < 0 || timestamp > videoElement.duration) {
         alert('Please enter a valid timestamp within the video duration.');
-    } else {
+    }
+    else {
         captureThumbnail(timestamp);
     }
 });
@@ -63,9 +68,11 @@ function generateThumbnails() {
     thumbnailsContainer.innerHTML = '';
     thumbnailTimes = [];
     const duration = videoElement.duration;
+
     for (let i = 0; i < 20; i++) {
         thumbnailTimes.push((i / 20) * duration);
     }
+
     currentThumbnailIndex = 0;
     captureNextThumbnail();
 }
@@ -88,15 +95,17 @@ function captureThumbnail(time, isBatch = false) {
         ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
         const thumbnailDataURL = canvas.toDataURL('image/png');
         const img = document.createElement('img');
+
         img.src = thumbnailDataURL;
         img.className = 'thumbnail';
         img.style.width = '90%';
         img.addEventListener('click', () => selectThumbnail(img, thumbnailDataURL));
+
         thumbnailsContainer.appendChild(img);
         videoElement.removeEventListener('seeked', capture);
 
         if (isBatch) {
-            setTimeout(captureNextThumbnail, 100); // Small delay to ensure next frame capture
+            setTimeout(captureNextThumbnail, 100);
         }
     });
 }
@@ -105,6 +114,7 @@ function selectThumbnail(img, dataURL) {
     if (selectedThumbnail) {
         selectedThumbnail.classList.remove('selected');
     }
+
     img.classList.add('selected');
     selectedThumbnail = img;
     downloadBtn.disabled = false;

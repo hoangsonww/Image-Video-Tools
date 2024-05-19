@@ -46,7 +46,8 @@ upload.addEventListener('change', (e) => {
                 canvas.style.display = 'none';
                 message.style.display = 'block';
                 disableButtons();
-            } else {
+            }
+            else {
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);

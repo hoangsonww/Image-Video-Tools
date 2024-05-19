@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (document.activeElement === widthInput) {
                 newHeight = Math.round(originalHeight * newWidth / originalWidth);
                 heightInput.value = newHeight;
-            } else if (document.activeElement === heightInput) {
+            }
+            else if (document.activeElement === heightInput) {
                 newWidth = Math.round(originalWidth * newHeight / originalHeight);
                 widthInput.value = newWidth;
             }
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('#dimensionsInput input').forEach(input => {
             input.disabled = false;
         });
+
         document.getElementById('width').value = originalWidth;
         document.getElementById('height').value = originalHeight;
     }

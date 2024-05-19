@@ -35,7 +35,8 @@ upload.addEventListener('change', (e) => {
         outputVideo.src = url;
         uploadMessage.style.display = 'none';
         processBtn.disabled = false;
-    } else {
+    }
+    else {
         alert('Please upload a valid video file.');
     }
 });

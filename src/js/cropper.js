@@ -21,6 +21,7 @@ const ctx = canvas.getContext('2d');
 const upload = document.getElementById('upload');
 const downloadBtn = document.getElementById('download-btn');
 const message = document.getElementById('message');
+
 let img = new Image();
 let isDragging = false;
 let startX, startY, endX, endY;
@@ -38,7 +39,8 @@ upload.addEventListener('change', (e) => {
                 canvas.style.display = 'none';
                 message.style.display = 'block';
                 downloadBtn.disabled = true;
-            } else {
+            }
+            else {
                 const ratio = img.width / img.height;
                 canvas.width = Math.max(Math.min(window.innerWidth * 0.9, img.width), MIN_CANVAS_DIMENSION);
                 canvas.height = canvas.width / ratio;
@@ -72,9 +74,11 @@ function onMouseMove(e) {
     if (isDragging) {
         endX = e.offsetX;
         endY = e.offsetY;
+
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
         }
+
         animationFrameId = requestAnimationFrame(draw);
     }
 }

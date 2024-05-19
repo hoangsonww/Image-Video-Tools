@@ -10,7 +10,8 @@ function toggleDarkMode() {
 
     if (body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
-    } else {
+    }
+    else {
         localStorage.setItem('darkMode', 'disabled');
     }
 }
@@ -35,6 +36,7 @@ const MIN_IMAGE_DIMENSION = 100;
 
 upload.addEventListener('change', (e) => {
     const reader = new FileReader();
+
     reader.onload = (event) => {
         img.onload = () => {
             if (img.width < MIN_IMAGE_DIMENSION || img.height < MIN_IMAGE_DIMENSION) {
@@ -43,7 +45,8 @@ upload.addEventListener('change', (e) => {
                 message.style.display = 'block';
                 watermarkBtn.disabled = true;
                 downloadBtn.disabled = true;
-            } else {
+            }
+            else {
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);
@@ -67,6 +70,7 @@ upload.addEventListener('change', (e) => {
 watermarkBtn.addEventListener('click', () => {
     const xPos = parseInt(xPosition.value, 10);
     const yPos = parseInt(yPosition.value, 10);
+
     if (xPos < 0 || xPos > canvas.width || yPos < 0 || yPos > canvas.height) {
         alert(`Please enter valid positions. Maximum X: ${canvas.width}, Maximum Y: ${canvas.height}`);
         return;

@@ -24,6 +24,7 @@ const flipHorizontalBtn = document.getElementById('flip-horizontal-btn');
 const flipVerticalBtn = document.getElementById('flip-vertical-btn');
 const downloadBtn = document.getElementById('download-btn');
 const message = document.getElementById('message');
+
 let img = new Image();
 let rotationAngle = 0;
 let flipH = false;
@@ -85,7 +86,8 @@ function drawTransformedImage() {
     if (rotationAngle % 180 === 0) {
         tempCanvas.width = img.width;
         tempCanvas.height = img.height;
-    } else {
+    }
+    else {
         tempCanvas.width = img.height;
         tempCanvas.height = img.width;
     }
