@@ -35,3 +35,9 @@ canvas {
 #download-btn:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 768px) {
+    #crop-container {
+        width: 95%;
+    }
+}

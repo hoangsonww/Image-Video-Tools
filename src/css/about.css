@@ -9,12 +9,11 @@
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
 p {
-    font-size: 18px;
     line-height: 1.6;
 }
 
@@ -63,4 +62,10 @@ body.dark-mode #gitHubLink1 {
 body.dark-mode #about-content {
     background: #333;
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    #about-content {
+        width: 95%;
+    }
 }

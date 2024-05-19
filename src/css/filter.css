@@ -7,7 +7,7 @@ body {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    width: 95vw;
+    width: 90vw;
     max-width: calc(100vw - 20px);
     margin: 10px auto;
     gap: 20px;
@@ -81,10 +81,12 @@ canvas {
     }
 
     #controls {
+        width: 95%;
         max-width: 100%;
     }
 
     #preview {
+        width: 95%;
         max-width: 100%;
     }
 }

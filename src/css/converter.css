@@ -76,10 +76,12 @@ canvas {
     }
 
     #controls {
+        width: 95%;
         max-width: 100%;
     }
 
     #preview {
+        width: 95%;
         max-width: 100%;
     }
 }

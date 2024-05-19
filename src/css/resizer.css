@@ -38,3 +38,14 @@ canvas {
     max-width: 100%;
     display: block;
 }
+
+@media (max-width: 768px) {
+    #inputSection {
+        width: 95%;
+        margin-right: 0;
+    }
+
+    #previewSection {
+        width: 95%;
+    }
+}
