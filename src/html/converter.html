@@ -7,6 +7,7 @@
     <title>Image & Video Tools: Unleash the Power of Media</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         #container {
             display: flex;
@@ -17,10 +18,6 @@
             margin: 10px auto;
             max-width: calc(100vw - 20px);
             gap: 20px;
-        }
-
-        button {
-            font: inherit;
         }
 
         #controls {
@@ -77,11 +74,6 @@
             background-color: #0056b3;
         }
 
-        .active {
-            background-color: #0056b3;
-            color: white;
-        }
-
         @media (max-width: 768px) {
             #container {
                 flex-direction: column;
@@ -100,138 +92,160 @@
 </head>
 
 <body>
-<div id="navbar">
-    <a id="header-link" href="../../index.html">
-        <span class="title">Image & Video Tools</span>
-    </a>
-    <div>
-        <a href="../../index.html">Image Resizer</a>
-        <a href="cropper.html">Image Cropper</a>
-        <a href="rotator.html">Image Rotator</a>
-        <a href="filter.html">Image Filters</a>
-        <a href="converter.html" style="text-decoration: underline; color: orangered">Image Converter</a>
-        <a href="watermarker.html">Image Watermarker</a>
-        <a href="thumbnail-generator.html">Thumbnail Generator</a>
-        <a href="sound-remover.html">Sound Remover</a>
-    </div>
-</div>
-<div id="container">
-    <div id="controls">
-        <p><strong>Image Converter</strong></p>
-        <input type="file" id="upload" accept="image/*">
-        <p id="message">Please upload an image to convert.</p>
-        <p>Select only one format to convert the image to:</p>
-        <div id="formats">
-            <button id="convert-to-png" disabled>Convert to PNG</button>
-            <button id="convert-to-jpeg" disabled>Convert to JPEG</button>
-            <button id="convert-to-bmp" disabled>Convert to BMP</button>
-            <button id="convert-to-gif" disabled>Convert to GIF</button>
-            <button id="convert-to-webp" disabled>Convert to WEBP</button>
-            <button id="convert-to-tiff" disabled>Convert to TIFF</button>
+    <div id="navbar">
+        <a id="header-link" href="../../index.html">
+            <span class="title">Image & Video Tools</span>
+        </a>
+        <div>
+            <a href="../../index.html">Image Resizer</a>
+            <a href="cropper.html">Image Cropper</a>
+            <a href="rotator.html">Image Rotator</a>
+            <a href="filter.html">Image Filters</a>
+            <a href="converter.html" style="text-decoration: underline; color: orangered">Image Converter</a>
+            <a href="watermarker.html">Image Watermarker</a>
+            <a href="thumbnail-generator.html">Thumbnail Generator</a>
+            <a href="sound-remover.html">Sound Remover</a>
         </div>
-        <button id="download-btn" disabled>Download Converted Image</button>
     </div>
-    <div id="preview">
-        <p><strong>Live Preview</strong></p>
-        <canvas id="canvas" width="500" height="500"></canvas>
+    <div id="container">
+        <div id="controls">
+            <p><strong>Image Converter</strong></p>
+            <input type="file" id="upload" accept="image/*" style="color: black !important">
+            <p id="message">Please upload an image to convert.</p>
+            <p>Select only one format to convert the image to:</p>
+            <div id="formats">
+                <button id="convert-to-png" disabled>Convert to PNG</button>
+                <button id="convert-to-jpeg" disabled>Convert to JPEG</button>
+                <button id="convert-to-bmp" disabled>Convert to BMP</button>
+                <button id="convert-to-gif" disabled>Convert to GIF</button>
+                <button id="convert-to-webp" disabled>Convert to WEBP</button>
+                <button id="convert-to-tiff" disabled>Convert to TIFF</button>
+            </div>
+            <button id="download-btn" disabled>Download Converted Image</button>
+        </div>
+        <div id="preview">
+            <p><strong>Live Preview</strong></p>
+            <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
     </div>
-</div>
 
-<script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const upload = document.getElementById('upload');
-    const message = document.getElementById('message');
-    const convertToPngBtn = document.getElementById('convert-to-png');
-    const convertToJpegBtn = document.getElementById('convert-to-jpeg');
-    const convertToBmpBtn = document.getElementById('convert-to-bmp');
-    const convertToGifBtn = document.getElementById('convert-to-gif');
-    const convertToWebpBtn = document.getElementById('convert-to-webp');
-    const convertToTiffBtn = document.getElementById('convert-to-tiff');
-    const downloadBtn = document.getElementById('download-btn');
-    let img = new Image();
-    let convertedImageDataURL = '';
-    let activeBtn = null;
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const upload = document.getElementById('upload');
+        const message = document.getElementById('message');
+        const convertToPngBtn = document.getElementById('convert-to-png');
+        const convertToJpegBtn = document.getElementById('convert-to-jpeg');
+        const convertToBmpBtn = document.getElementById('convert-to-bmp');
+        const convertToGifBtn = document.getElementById('convert-to-gif');
+        const convertToWebpBtn = document.getElementById('convert-to-webp');
+        const convertToTiffBtn = document.getElementById('convert-to-tiff');
+        const downloadBtn = document.getElementById('download-btn');
+        let img = new Image();
+        let convertedImageDataURL = '';
+        let activeBtn = null;
 
-    const MIN_IMAGE_DIMENSION = 100;
+        const MIN_IMAGE_DIMENSION = 100;
 
-    upload.addEventListener('change', (e) => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            img.onload = () => {
-                if (img.width < MIN_IMAGE_DIMENSION || img.height < MIN_IMAGE_DIMENSION) {
-                    alert('Image is too small. Please upload an image with dimensions at least 100x100 pixels.');
-                    canvas.style.display = 'none';
-                    message.style.display = 'block';
-                    disableButtons();
-                } else {
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.drawImage(img, 0, 0);
-                    canvas.style.display = 'block';
-                    message.style.display = 'none';
-                    enableButtons();
+        upload.addEventListener('change', (e) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                img.onload = () => {
+                    if (img.width < MIN_IMAGE_DIMENSION || img.height < MIN_IMAGE_DIMENSION) {
+                        alert('Image is too small. Please upload an image with dimensions at least 100x100 pixels.');
+                        canvas.style.display = 'none';
+                        message.style.display = 'block';
+                        disableButtons();
+                    } else {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0);
+                        canvas.style.display = 'block';
+                        message.style.display = 'none';
+                        enableButtons();
+                    }
                 }
+                img.src = event.target.result;
             }
-            img.src = event.target.result;
-        }
-        reader.readAsDataURL(e.target.files[0]);
-    });
-
-    function convertImage(format, button) {
-        convertedImageDataURL = canvas.toDataURL(`image/${format}`);
-        downloadBtn.disabled = false;
-        setActiveButton(button);
-    }
-
-    function setActiveButton(button) {
-        if (activeBtn) {
-            activeBtn.classList.remove('active');
-        }
-        button.classList.add('active');
-        activeBtn = button;
-    }
-
-    function addConversionEventListeners() {
-        const buttons = document.querySelectorAll('#formats button');
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                convertImage(button.textContent.split(' ')[2].toLowerCase(), button);
-            });
+            reader.readAsDataURL(e.target.files[0]);
         });
-    }
 
-    addConversionEventListeners();
-
-    downloadBtn.addEventListener('click', () => {
-        if (activeBtn) {
-            const link = document.createElement('a');
-            link.download = `converted-image.${activeBtn.textContent.split(' ')[2].toLowerCase()}`;
-            link.href = convertedImageDataURL;
-            link.click();
+        function convertImage(format, button) {
+            convertedImageDataURL = canvas.toDataURL(`image/${format}`);
+            downloadBtn.disabled = false;
+            setActiveButton(button);
         }
-    });
 
-    function enableButtons() {
-        convertToPngBtn.disabled = false;
-        convertToJpegBtn.disabled = false;
-        convertToBmpBtn.disabled = false;
-        convertToGifBtn.disabled = false;
-        convertToWebpBtn.disabled = false;
-        convertToTiffBtn.disabled = false;
-        downloadBtn.disabled = true;
-    }
+        function setActiveButton(button) {
+            if (activeBtn) {
+                activeBtn.classList.remove('active');
+            }
+            button.classList.add('active');
+            activeBtn = button;
+        }
 
-    function disableButtons() {
-        convertToPngBtn.disabled = true;
-        convertToJpegBtn.disabled = true;
-        convertToBmpBtn.disabled = true;
-        convertToGifBtn.disabled = true;
-        convertToWebpBtn.disabled = true;
-        convertToTiffBtn.disabled = true;
-        downloadBtn.disabled = true;
-    }
-</script>
+        function addConversionEventListeners() {
+            const buttons = document.querySelectorAll('#formats button');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    convertImage(button.textContent.split(' ')[2].toLowerCase(), button);
+                });
+            });
+        }
+
+        addConversionEventListeners();
+
+        downloadBtn.addEventListener('click', () => {
+            if (activeBtn) {
+                const link = document.createElement('a');
+                link.download = `converted-image.${activeBtn.textContent.split(' ')[2].toLowerCase()}`;
+                link.href = convertedImageDataURL;
+                link.click();
+            }
+        });
+
+        function enableButtons() {
+            convertToPngBtn.disabled = false;
+            convertToJpegBtn.disabled = false;
+            convertToBmpBtn.disabled = false;
+            convertToGifBtn.disabled = false;
+            convertToWebpBtn.disabled = false;
+            convertToTiffBtn.disabled = false;
+            downloadBtn.disabled = true;
+        }
+
+        function disableButtons() {
+            convertToPngBtn.disabled = true;
+            convertToJpegBtn.disabled = true;
+            convertToBmpBtn.disabled = true;
+            convertToGifBtn.disabled = true;
+            convertToWebpBtn.disabled = true;
+            convertToTiffBtn.disabled = true;
+            downloadBtn.disabled = true;
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            }
+            else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+    </script>
+
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
 </body>
 
 </html>

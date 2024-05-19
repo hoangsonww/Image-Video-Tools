@@ -6,6 +6,8 @@
     <title>Image & Video Tools: Unleash the Power of Media</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <style>
         body {
             overflow-x: hidden;
@@ -140,7 +142,7 @@
     <div id="container">
         <div id="controls">
             <p><strong>Thumbnail Generator</strong></p>
-            <input type="file" id="upload" accept="video/*">
+            <input type="file" id="upload" accept="video/*" style="color: black !important">
             <p id="message">Please upload a video to generate thumbnails.</p>
             <p><strong>Generate 20 random thumbnails from your video:</strong></p>
             <button id="generate-thumbnails-btn" disabled>Generate 20 Thumbnails</button>
@@ -158,7 +160,29 @@
         </div>
     </div>
 
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            }
+            else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         const upload = document.getElementById('upload');

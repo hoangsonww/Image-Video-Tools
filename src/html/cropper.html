@@ -7,6 +7,7 @@
     <title>Image & Video Tools: Unleash the Power of Media</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/src/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         #crop-container {
             display: flex;
@@ -26,7 +27,7 @@
             border: 1px solid black;
             max-width: 100%;
             max-height: 100%;
-            display: none; /* Hide canvas by default */
+            display: none;
         }
 
         #download-btn {
@@ -63,14 +64,36 @@
     </div>
     <div id="container">
         <div id="crop-container">
-            <input type="file" id="upload" accept="image/*">
+            <input type="file" id="upload" accept="image/*" style="color: black !important">
             <canvas id="canvas" width="500" height="500"></canvas>
             <p id="message">Please upload an image to enable cropping.</p>
             <button id="download-btn" disabled>Download Cropped Image</button>
         </div>
     </div>
 
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            }
+            else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         const upload = document.getElementById('upload');

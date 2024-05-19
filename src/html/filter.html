@@ -8,6 +8,7 @@
     <script src="../js/resizer.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             overflow-x: hidden;
@@ -115,7 +116,7 @@
     <div id="container">
         <div id="controls">
             <p><strong>Image Filter Selection</strong></p>
-            <input type="file" id="upload" accept="image/*">
+            <input type="file" id="upload" accept="image/*" style="color: black !important">
             <p id="message">Please upload an image to apply filters.</p>
             <div id="filters">
                 <button id="grayscale-btn" disabled>Grayscale</button>
@@ -139,7 +140,29 @@
         </div>
     </div>
 
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            }
+            else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         const upload = document.getElementById('upload');
@@ -159,7 +182,7 @@
         const downloadBtn = document.getElementById('download-btn');
         let img = new Image();
 
-        const MIN_IMAGE_DIMENSION = 100; // Minimum dimension for width and height
+        const MIN_IMAGE_DIMENSION = 100;
 
         upload.addEventListener('change', (e) => {
             const reader = new FileReader();
@@ -188,7 +211,7 @@
             ctx.drawImage(img, 0, 0);
             ctx.filter = filter;
             ctx.drawImage(img, 0, 0);
-            ctx.filter = 'none'; // Reset filter
+            ctx.filter = 'none';
         }
 
         grayscaleBtn.addEventListener('click', () => applyFilter('grayscale(100%)'));

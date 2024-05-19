@@ -6,6 +6,7 @@ body {
     padding: 0;
     background-color: #f7f8fa;
     color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #navbar {
@@ -41,6 +42,35 @@ body {
     padding: 20px;
 }
 
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+#dark-mode-toggle {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 18px !important;
+    transition: background-color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #0056b3;
+}
+
 #inputSection {
     width: 33%;
     background: white;
@@ -48,6 +78,7 @@ body {
     margin-right: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #previewSection {
@@ -57,6 +88,17 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border-radius: 8px;
     text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode #inputSection,
+body.dark-mode #previewSection {
+    background-color: #333;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .instructions {
+    color: #ffffff;
 }
 
 #previewTitle {
@@ -105,8 +147,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
-    font-weight: 500;
+    font: inherit;
     transition: background-color 0.3s ease;
 }
 

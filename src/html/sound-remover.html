@@ -6,6 +6,8 @@
     <title>Image & Video Tools: Unleash the Power of Media</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <style>
         body {
             overflow-x: hidden;
@@ -146,7 +148,7 @@
     <div id="container">
         <div id="controls">
             <p><strong>Remove Audio from Video</strong></p>
-            <input type="file" id="upload" accept="video/*">
+            <input type="file" id="upload" accept="video/*" style="color: black !important">
             <p id="upload-message">Please upload a video to remove its audio.</p>
             <button id="process-btn" disabled>Remove Audio</button>
             <div id="spinner" class="spinner" style="display: none;"></div>
@@ -165,7 +167,29 @@
         </div>
     </div>
 
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            }
+            else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
         const upload = document.getElementById('upload');
         const uploadMessage = document.getElementById('upload-message');
         const processBtn = document.getElementById('process-btn');
@@ -238,11 +262,12 @@
                     }
                 };
 
-                mediaRecorder.start(100); // Collect data every 100ms
+                mediaRecorder.start(100);
                 videoElement.onended = () => {
                     mediaRecorder.stop();
                 };
-            } catch (error) {
+            }
+            catch (error) {
                 console.error(error);
                 spinner.style.display = 'none';
                 progress.style.display = 'none';
