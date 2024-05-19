@@ -8,6 +8,11 @@ body {
     color: #333;
 }
 
+.active {
+    font-weight: bold;
+    color: #0056b3;
+}
+
 #navbar {
     background: linear-gradient(90deg, #007bff, #0056b3);
     color: white;
