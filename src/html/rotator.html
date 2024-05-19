@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device=width, initial-scale=1.0">
+  <title>Image & Video Tools: Unleash the Power of Media</title>
+  <script src="../js/resizer.js"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <style>
+    #rotation-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      max-width: 100%;
+      width: 90vw;
+      overflow: hidden;
+    }
+
+    #upload {
+      margin-bottom: 20px;
+    }
+
+    canvas {
+      border: 1px solid black;
+      max-width: 100%;
+      max-height: 100%;
+      display: none;
+    }
+
+    #rotate-btn, #download-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    #rotate-btn:hover, #download-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+<div id="navbar">
+  <a id="header-link" href="../../index.html">
+    <span class="title">Image & Video Tools</span>
+  </a>
+  <div>
+    <a href="#">Image Resizer</a>
+    <a href="cropper.html">Image Cropper</a>
+    <a href="rotator.html">Image Rotator</a>
+    <a href="#">Image Filters</a>
+    <a href="#">Image Converter</a>
+    <a href="#">Thumbnail Generator</a>
+    <a href="#">Video Sound Remover</a>
+  </div>
+</div>
+<div id="container">
+  <div id="rotation-container">
+    <input type="file" id="upload" accept="image/*">
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <p id="message">Please upload an image to enable rotation.</p>
+    <button id="rotate-btn" disabled>Rotate Image</button>
+    <button id="download-btn" disabled>Download Rotated Image</button>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const upload = document.getElementById('upload');
+  const rotateBtn = document.getElementById('rotate-btn');
+  const downloadBtn = document.getElementById('download-btn');
+  const message = document.getElementById('message');
+  let img = new Image();
+  let rotationAngle = 0; // Angle in degrees
+
+  const MIN_IMAGE_DIMENSION = 100; // Minimum dimension for width and height
+
+  upload.addEventListener('change', (e) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      img.onload = () => {
+        if (img.width < MIN_IMAGE_DIMENSION || img.height < MIN_IMAGE_DIMENSION) {
+          alert('Image is too small. Please upload an image with dimensions at least 100x100 pixels.');
+          canvas.style.display = 'none';
+          message.style.display = 'block';
+          rotateBtn.disabled = true;
+          downloadBtn.disabled = true;
+        } else {
+          rotationAngle = 0; // Reset rotation angle
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+          canvas.style.display = 'block';
+          message.style.display = 'none';
+          rotateBtn.disabled = false;
+          downloadBtn.disabled = false;
+        }
+      }
+      img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+
+  rotateBtn.addEventListener('click', () => {
+    rotationAngle = (rotationAngle + 90) % 360;
+    drawRotatedImage();
+  });
+
+  function drawRotatedImage() {
+    const tempCanvas = document.createElement('canvas');
+    const tempCtx = tempCanvas.getContext('2d');
+    if (rotationAngle % 180 === 0) {
+      tempCanvas.width = img.width;
+      tempCanvas.height = img.height;
+    } else {
+      tempCanvas.width = img.height;
+      tempCanvas.height = img.width;
+    }
+
+    tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+    tempCtx.save();
+    tempCtx.translate(tempCanvas.width / 2, tempCanvas.height / 2);
+    tempCtx.rotate(rotationAngle * Math.PI / 180);
+    tempCtx.drawImage(img, -img.width / 2, -img.height / 2);
+    tempCtx.restore();
+
+    canvas.width = tempCanvas.width;
+    canvas.height = tempCanvas.height;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(tempCanvas, 0, 0);
+  }
+
+  downloadBtn.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'rotated-image.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+</script>
+</body>
+
+</html>
