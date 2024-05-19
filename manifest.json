@@ -1,7 +1,7 @@
 {
   "name": "Image & Video Tools",
   "short_name": "ImgVidTools",
-  "description": "A comprehensive suite of tools for manipulating images and videos directly in your browser.",
+  "description": "A comprehensive and lightweight suite of tools for manipulating images and videos directly in your browser.",
   "version": "1.0.0",
   "manifest_version": 3,
   "icons": [
@@ -37,7 +37,7 @@
   "orientation": "any",
   "scope": "/",
   "permissions": [],
-  "author": "Your Name",
+  "author": "Son Nguyen",
   "default_locale": "en",
   "shortcuts": [
     {
