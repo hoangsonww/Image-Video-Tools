@@ -71,50 +71,6 @@ body.dark-mode {
     background-color: #0056b3;
 }
 
-#inputSection {
-    width: 33%;
-    background: white;
-    padding: 20px;
-    margin-right: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#gitHubLink {
-    color: black;
-}
-
-body.dark-mode #gitHubLink {
-    color: white;
-}
-
-#gitHubLink:hover {
-    color: orangered;
-}
-
-#gitHubLink1 {
-    color: black;
-}
-
-body.dark-mode #gitHubLink1 {
-    color: white;
-}
-
-#gitHubLink1:hover {
-    color: orangered;
-}
-
-#previewSection {
-    width: 67%;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    text-align: center;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
 body.dark-mode #inputSection,
 body.dark-mode #previewSection {
     background-color: #333;
@@ -186,10 +142,6 @@ label {
 input[type="radio"], input[type="checkbox"] {
     width: auto;
     margin-right: 5px;
-}
-
-#sizeUnit {
-    margin-bottom: 20px;
 }
 
 input:disabled, select:disabled {
