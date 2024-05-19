@@ -34,7 +34,7 @@ let currentThumbnailIndex = 0;
 upload.addEventListener('change', (e) => {
     const file = e.target.files[0];
 
-    if (file && file.type.startsWith('video/')) {
+    if (file?.type?.startsWith('video/')) {
         videoElement.src = URL.createObjectURL(file);
         message.style.display = 'none';
         generateThumbnailsBtn.disabled = false;

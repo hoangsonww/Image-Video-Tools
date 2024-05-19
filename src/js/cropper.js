@@ -78,7 +78,6 @@ function onMouseMove(e) {
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
         }
-
         animationFrameId = requestAnimationFrame(draw);
     }
 }

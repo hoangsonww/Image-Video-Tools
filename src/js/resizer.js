@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('imageInput').addEventListener('change', function() {
-        if (this.files && this.files[0]) {
+        if (this.files?.[0]) {
             originalFileName = this.files[0].name;
             const reader = new FileReader();
             reader.onload = function(e) {

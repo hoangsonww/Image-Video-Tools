@@ -30,9 +30,8 @@ let processedVideoBlob = null;
 
 upload.addEventListener('change', (e) => {
     const file = e.target.files[0];
-    if (file && file.type.startsWith('video/')) {
-        const url = URL.createObjectURL(file);
-        outputVideo.src = url;
+    if (file?.type?.startsWith('video/')) {
+        outputVideo.src = URL.createObjectURL(file);
         uploadMessage.style.display = 'none';
         processBtn.disabled = false;
     }

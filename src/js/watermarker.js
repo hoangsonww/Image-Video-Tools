@@ -77,8 +77,7 @@ watermarkBtn.addEventListener('click', () => {
     }
 
     ctx.drawImage(img, 0, 0);
-    const font = `${fontStyle.value} ${fontSize.value}px ${fontFamily.value}`;
-    ctx.font = font;
+    ctx.font = `${fontStyle.value} ${fontSize.value}px ${fontFamily.value}`;
     ctx.fillStyle = watermarkColor.value;
     ctx.fillText(watermarkText.value, xPos, yPos);
     downloadBtn.disabled = false;
