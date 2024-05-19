@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device=width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image & Video Tools: Unleash the Power of Media</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
@@ -19,6 +19,10 @@
             gap: 20px;
         }
 
+        button {
+            font: inherit;
+        }
+
         #controls {
             flex: 1;
             display: flex;
@@ -27,43 +31,43 @@
             max-width: 30%;
         }
 
-        #preview {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 70%;
-        }
-
         #upload {
             margin-bottom: 20px;
         }
 
+        #preview {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 70%;
+        }
+
         canvas {
             border: 1px solid black;
+            width: 100%;
             max-width: 100%;
-            max-height: 100%;
+            height: auto;
             display: none;
         }
 
-        button {
-            margin-top: 10px;
+        #watermarkText {
+            font: inherit;
+        }
+
+        #watermark-btn, #download-btn {
+            margin-top: 20px;
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
             font: inherit;
-            width: 100%;
         }
 
-        button:hover {
+        #watermark-btn:hover, #download-btn:hover {
             background-color: #0056b3;
-        }
-
-        #message {
-            margin-top: 20px;
-            color: red;
         }
 
         @media (max-width: 768px) {
@@ -89,33 +93,49 @@
 
 <body>
 <div id="navbar">
-    <a id="header-link" href="../../index.html">
+    <a id="header-link" href="index.html">
         <span class="title">Image & Video Tools</span>
     </a>
     <div>
         <a href="../../index.html">Image Resizer</a>
-        <a href="cropper.html">Image Cropper</a>
-        <a href="rotator.html" style="text-decoration: underline; color: orangered">Image Rotator</a>
+        <a href="rotator.html">Image Rotator</a>
         <a href="filter.html">Image Filters</a>
         <a href="converter.html">Image Converter</a>
-        <a href="watermarker.html">Image Watermarker</a>
+        <a href="watermarker.html" style="text-decoration: underline; color: orangered">Image Watermarker</a>
         <a href="thumbnail-generator.html">Thumbnail Generator</a>
         <a href="sound-remover.html">Sound Remover</a>
     </div>
 </div>
 <div id="container">
     <div id="controls">
-        <p><strong>Image Rotator & Flipper</strong></p>
+        <p><strong>Image Watermarking</strong></p>
         <input type="file" id="upload" accept="image/*">
-        <p id="message">Please upload an image to enable rotation and flipping.</p>
-        <button id="rotate-btn" disabled>Rotate Image</button>
-        <button id="flip-horizontal-btn" disabled>Flip Horizontal</button>
-        <button id="flip-vertical-btn" disabled>Flip Vertical</button>
-        <button id="download-btn" disabled>Download Image</button>
+        <p id="message">Please upload an image to add watermark.</p>
+        <label for="watermarkText">Watermark Text:</label>
+        <input type="text" id="watermarkText" placeholder="Enter watermark text" style="margin-top: 20px;">
+        <div style="margin-top: 10px">
+            <label for="fontSize">Font Size (in pixels):</label>
+            <input type="number" id="fontSize" value="48" min="10" max="100" style="width: 80px;">
+        </div>
+        <div>
+            <label for="watermarkColor">Color:</label>
+            <input type="color" id="watermarkColor" value="#ffffff">
+        </div>
+        <div style="margin-top: 10px">
+            <label for="xPosition">X Position:</label>
+            <input type="number" id="xPosition" placeholder="10" min="0" style="width: 80px;">
+        </div>
+        <div>
+            <label for="yPosition">Y Position:</label>
+            <input type="number" id="yPosition" placeholder="10" min="0" style="width: 80px;">
+        </div>
+        <p id="instructions"></p>
+        <button id="watermark-btn" disabled>Add Watermark</button>
+        <button id="download-btn" disabled>Download Watermarked Image</button>
     </div>
     <div id="preview">
-        <p><strong>Preview</strong></p>
-        <canvas id="canvas"></canvas>
+        <p><strong>Live Preview</strong></p>
+        <canvas id="canvas" width="500" height="500"></canvas>
     </div>
 </div>
 
@@ -123,17 +143,18 @@
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const upload = document.getElementById('upload');
-    const rotateBtn = document.getElementById('rotate-btn');
-    const flipHorizontalBtn = document.getElementById('flip-horizontal-btn');
-    const flipVerticalBtn = document.getElementById('flip-vertical-btn');
+    const watermarkText = document.getElementById('watermarkText');
+    const fontSize = document.getElementById('fontSize');
+    const watermarkColor = document.getElementById('watermarkColor');
+    const xPosition = document.getElementById('xPosition');
+    const yPosition = document.getElementById('yPosition');
+    const watermarkBtn = document.getElementById('watermark-btn');
     const downloadBtn = document.getElementById('download-btn');
     const message = document.getElementById('message');
+    const instructions = document.getElementById('instructions');
     let img = new Image();
-    let rotationAngle = 0; // Angle in degrees
-    let flipH = false; // Horizontal flip
-    let flipV = false; // Vertical flip
 
-    const MIN_IMAGE_DIMENSION = 100; // Minimum dimension for width and height
+    const MIN_IMAGE_DIMENSION = 100;
 
     upload.addEventListener('change', (e) => {
         const reader = new FileReader();
@@ -143,23 +164,20 @@
                     alert('Image is too small. Please upload an image with dimensions at least 100x100 pixels.');
                     canvas.style.display = 'none';
                     message.style.display = 'block';
-                    rotateBtn.disabled = true;
-                    flipHorizontalBtn.disabled = true;
-                    flipVerticalBtn.disabled = true;
+                    watermarkBtn.disabled = true;
                     downloadBtn.disabled = true;
                 } else {
-                    rotationAngle = 0; // Reset rotation angle
-                    flipH = false; // Reset horizontal flip
-                    flipV = false; // Reset vertical flip
                     canvas.width = img.width;
                     canvas.height = img.height;
                     ctx.drawImage(img, 0, 0);
                     canvas.style.display = 'block';
                     message.style.display = 'none';
-                    rotateBtn.disabled = false;
-                    flipHorizontalBtn.disabled = false;
-                    flipVerticalBtn.disabled = false;
-                    downloadBtn.disabled = false;
+                    watermarkBtn.disabled = false;
+                    downloadBtn.disabled = true;
+                    // Set default positions for the watermark
+                    xPosition.value = 10;
+                    yPosition.value = canvas.height - 30;
+                    instructions.textContent = `For X Position, enter a value between 0 and ${canvas.width}. For Y Position, enter a value between 0 and ${canvas.height}. Default position is bottom left.`;
                 }
             }
             img.src = event.target.result;
@@ -167,52 +185,28 @@
         reader.readAsDataURL(e.target.files[0]);
     });
 
-    rotateBtn.addEventListener('click', () => {
-        rotationAngle = (rotationAngle + 90) % 360;
-        drawTransformedImage();
-    });
-
-    flipHorizontalBtn.addEventListener('click', () => {
-        flipH = !flipH;
-        drawTransformedImage();
-    });
-
-    flipVerticalBtn.addEventListener('click', () => {
-        flipV = !flipV;
-        drawTransformedImage();
-    });
-
-    function drawTransformedImage() {
-        const tempCanvas = document.createElement('canvas');
-        const tempCtx = tempCanvas.getContext('2d');
-        if (rotationAngle % 180 === 0) {
-            tempCanvas.width = img.width;
-            tempCanvas.height = img.height;
-        } else {
-            tempCanvas.width = img.height;
-            tempCanvas.height = img.width;
+    watermarkBtn.addEventListener('click', () => {
+        const xPos = parseInt(xPosition.value, 10);
+        const yPos = parseInt(yPosition.value, 10);
+        if (xPos < 0 || xPos > canvas.width || yPos < 0 || yPos > canvas.height) {
+            alert(`Please enter valid positions. Maximum X: ${canvas.width}, Maximum Y: ${canvas.height}`);
+            return;
         }
 
-        tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
-        tempCtx.save();
-        tempCtx.translate(tempCanvas.width / 2, tempCanvas.height / 2);
-        tempCtx.rotate(rotationAngle * Math.PI / 180);
-        tempCtx.scale(flipH ? -1 : 1, flipV ? -1 : 1);
-        tempCtx.drawImage(img, -img.width / 2, -img.height / 2);
-        tempCtx.restore();
-
-        canvas.width = tempCanvas.width;
-        canvas.height = tempCanvas.height;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(tempCanvas, 0, 0);
-    }
+        ctx.drawImage(img, 0, 0);
+        ctx.font = `${fontSize.value}px serif`;
+        ctx.fillStyle = watermarkColor.value;
+        ctx.fillText(watermarkText.value, xPos, yPos);
+        downloadBtn.disabled = false;
+    });
 
     downloadBtn.addEventListener('click', () => {
         const link = document.createElement('a');
-        link.download = 'transformed-image.png';
+        link.download = 'watermarked-image.png';
         link.href = canvas.toDataURL();
         link.click();
     });
 </script>
 </body>
+
 </html>
