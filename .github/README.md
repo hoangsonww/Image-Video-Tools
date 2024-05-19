@@ -151,7 +151,7 @@ To install and run this application locally, follow these steps:
 #### Sound Remover
 
 1. Choose a video by clicking the "Choose a video to remove sound" input.
-2. Click "Remove Sound" to process the video.
+2. Click "Remove Sound" to process the video. It may take some time depending on the video length.
 3. Click "Download Video" to download the video without sound.
 
 ### Dark Mode

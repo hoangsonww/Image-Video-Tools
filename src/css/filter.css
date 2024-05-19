@@ -24,6 +24,9 @@ button {
     align-items: center;
     max-width: 30%;
     margin-left: 0;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #filters {
@@ -44,6 +47,9 @@ button {
     justify-content: center;
     align-items: center;
     max-width: 70%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
 canvas {
@@ -51,7 +57,7 @@ canvas {
     width: 100%;
     max-width: 100%;
     height: auto;
-    display: none; /* Hide canvas by default */
+    display: none;
 }
 
 #download-btn {

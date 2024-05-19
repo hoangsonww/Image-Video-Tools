@@ -35,6 +35,13 @@ body {
     font-weight: 600;
 }
 
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
 body.dark-mode {
     background-color: #121212;
     color: #ffffff;
@@ -122,6 +129,13 @@ body.dark-mode .instructions {
     font-weight: bold;
 }
 
+canvas {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+}
+
 input[type="number"], input[type="file"], input[type="radio"], input[type="checkbox"] {
     width: 100%;
     padding: 8px;
@@ -169,6 +183,11 @@ label {
     font-weight: 500;
 }
 
+input[type="radio"], input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
 #sizeUnit {
     margin-bottom: 20px;
 }
@@ -209,91 +228,5 @@ input:disabled, select:disabled {
         width: 90%;
         margin-right: 0;
         margin-bottom: 20px;
-    }
-}
-
-#container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 95vw;
-    margin: 10px auto;
-    max-width: calc(100vw - 20px);
-    gap: 20px;
-}
-
-#controls {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 30%;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#message {
-    color: #c60000;
-}
-
-#formats {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#upload {
-    margin-bottom: 20px;
-}
-
-#preview {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 70%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-}
-
-canvas {
-    border: 1px solid black;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: none;
-}
-
-#download-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font: inherit;
-}
-
-#download-btn:hover {
-    background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-    #container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #controls {
-        max-width: 100%;
-    }
-
-    #preview {
-        max-width: 100%;
     }
 }

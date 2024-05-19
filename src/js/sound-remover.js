@@ -83,8 +83,8 @@ processBtn.addEventListener('click', async () => {
             if (event.data.size > 0) {
                 chunks.push(event.data);
                 const percentComplete = ((chunks.length / (stream.getVideoTracks()[0].getSettings().frameRate * videoElement.duration)) * 100).toFixed(2);
-                progressText.textContent = `${percentComplete}%`;
-                progressBarFill.style.width = `${percentComplete}%`;
+                progressText.textContent = `${percentComplete * 2}%`;
+                progressBarFill.style.width = `${percentComplete * 2}%`;
             }
         };
 
