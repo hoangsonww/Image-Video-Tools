@@ -1,7 +1,7 @@
-# The MovieVerse - Security Policies
+# Image & Video Tools - Security Policies
 
 ## Introduction
-The MovieVerse is a dynamic web application designed to provide users with an engaging platform to explore and learn about various movies, directors, actors, and more. Ensuring the security of our users and the application is of paramount importance. This document outlines the security measures, policies, and best practices implemented in The MovieVerse.
+Image & Video Tools is a dynamic web application designed to provide users with an engaging platform to explore and learn about various movies, directors, actors, and more. Ensuring the security of our users and the application is of paramount importance. This document outlines the security measures, policies, and best practices implemented in Image & Video Tools.
 
 Current MovieVerse Version: `1.1.2`
 
@@ -12,14 +12,14 @@ Current MovieVerse Version: `1.1.2`
 - **Cookies and Sessions**: Sessions are managed securely. Cookies, if used, are encrypted and do not store sensitive information.
 
 ### 2. Secure Communication
-- **HTTPS**: The MovieVerse enforces HTTPS to ensure secure communication over the internet, encrypting data in transit.
+- **HTTPS**: Image & Video Tools enforces HTTPS to ensure secure communication over the internet, encrypting data in transit.
 
 ### 3. Input Validation and Sanitization
 - **Form Inputs**: All inputs from forms are validated and sanitized to prevent SQL injection, XSS attacks, and other forms of data tampering.
 - **API Requests**: Inputs via API requests are also validated and sanitized.
 
 ### 4. Authentication and Authorization
-- **OAuth2**: For user authentication, The MovieVerse implements OAuth2 protocol, ensuring secure authorization.
+- **OAuth2**: For user authentication, Image & Video Tools implements OAuth2 protocol, ensuring secure authorization.
 - **Role-Based Access Control**: Different levels of access are enforced depending on the user's role to prevent unauthorized access to sensitive data.
 
 ### 5. Cross-Site Scripting (XSS) Protection
@@ -50,7 +50,7 @@ Current MovieVerse Version: `1.1.2`
 - **Firewalls and Intrusion Detection Systems**: Firewalls and IDS are in place to detect and prevent unauthorized access.
 
 ## Incident Response Plan
-The MovieVerse has an incident response plan to quickly address and mitigate any security incidents. This includes:
+Image & Video Tools has an incident response plan to quickly address and mitigate any security incidents. This includes:
 - Immediate identification and isolation of the incident.
 - Analysis and investigation of the breach.
 - Prompt resolution and recovery measures.
@@ -61,7 +61,7 @@ The MovieVerse has an incident response plan to quickly address and mitigate any
 We encourage responsible disclosure of any security vulnerabilities. Please report any security concerns or vulnerabilities to us at [info@movie-verse.com](mailto:info@movie-verse.com). We are committed to working with security researchers and the community to resolve issues efficiently and responsibly.
 
 ## Continuous Improvement
-Security is an ongoing process. The MovieVerse App is committed to continuously improving the security posture of the application by staying up-to-date with the latest security trends, threats, and mitigation techniques.
+Security is an ongoing process. Image & Video Tools App is committed to continuously improving the security posture of the application by staying up-to-date with the latest security trends, threats, and mitigation techniques.
 
 ## Contact Information
 

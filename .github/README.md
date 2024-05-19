@@ -163,7 +163,10 @@ To install and run this application locally, follow these steps:
 
 We welcome contributions to improve this application. Please follow these steps:
 
-1. Fork the repository.
+1. Fork the repository or clone it locally:
+   ```bash
+   git clone https://github.com/hoangsonww/Image-Video-Tools.git
+   ```
 2. Create a new branch:
    ```bash
    git checkout -b feature-branch
