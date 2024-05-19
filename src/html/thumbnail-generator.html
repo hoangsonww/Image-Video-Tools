@@ -122,143 +122,143 @@
     </style>
 </head>
 <body>
-<div id="navbar">
-    <a id="header-link" href="../../index.html">
-        <span class="title">Image & Video Tools</span>
-    </a>
-    <div>
-        <a href="../../index.html">Image Resizer</a>
-        <a href="cropper.html">Image Cropper</a>
-        <a href="rotator.html">Image Rotator</a>
-        <a href="filter.html">Image Filters</a>
-        <a href="converter.html">Image Converter</a>
-        <a href="thumbnail-generator.html" style="color: orangered; text-decoration: underline">Thumbnail Generator</a>
-        <a href="sound-remover.html">Sound Remover</a>
+    <div id="navbar">
+        <a id="header-link" href="../../index.html">
+            <span class="title">Image & Video Tools</span>
+        </a>
+        <div>
+            <a href="../../index.html">Image Resizer</a>
+            <a href="cropper.html">Image Cropper</a>
+            <a href="rotator.html">Image Rotator</a>
+            <a href="filter.html">Image Filters</a>
+            <a href="converter.html">Image Converter</a>
+            <a href="thumbnail-generator.html" style="color: orangered; text-decoration: underline">Thumbnail Generator</a>
+            <a href="sound-remover.html">Sound Remover</a>
+        </div>
     </div>
-</div>
-<div id="container">
-    <div id="controls">
-        <p><strong>Thumbnail Generator</strong></p>
-        <input type="file" id="upload" accept="video/*">
-        <p id="message">Please upload a video to generate thumbnails.</p>
-        <p><strong>Generate 20 random thumbnails from your video:</strong></p>
-        <button id="generate-thumbnails-btn" disabled>Generate 20 Thumbnails</button>
-        <div style="height: 20px"></div>
-        <label for="timestamp">Or, enter a timestamp:</label>
-        <input type="number" id="timestamp" min="0" placeholder="Timestamp" disabled>
-        <p class="instructions">Enter a timestamp in seconds (e.g., 10 for 10 seconds). We will generate a thumbnail at that timestamp for you!</p>
-        <button id="generate-thumbnail-btn" disabled>Generate Thumbnail</button>
-        <button id="download-btn" disabled>Download Selected Thumbnail</button>
+    <div id="container">
+        <div id="controls">
+            <p><strong>Thumbnail Generator</strong></p>
+            <input type="file" id="upload" accept="video/*">
+            <p id="message">Please upload a video to generate thumbnails.</p>
+            <p><strong>Generate 20 random thumbnails from your video:</strong></p>
+            <button id="generate-thumbnails-btn" disabled>Generate 20 Thumbnails</button>
+            <div style="height: 20px"></div>
+            <label for="timestamp">Or, enter a timestamp:</label>
+            <input type="number" id="timestamp" min="0" placeholder="Timestamp" disabled>
+            <p class="instructions">Enter a timestamp in seconds (e.g., 10 for 10 seconds). We will generate a thumbnail at that timestamp for you!</p>
+            <button id="generate-thumbnail-btn" disabled>Generate Thumbnail</button>
+            <button id="download-btn" disabled>Download Selected Thumbnail</button>
+        </div>
+        <div id="preview">
+            <p><strong>Thumbnails</strong></p>
+            <div id="thumbnails"></div>
+            <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
     </div>
-    <div id="preview">
-        <p><strong>Thumbnails</strong></p>
-        <div id="thumbnails"></div>
-        <canvas id="canvas" width="500" height="500"></canvas>
-    </div>
-</div>
 
-<script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const upload = document.getElementById('upload');
-    const message = document.getElementById('message');
-    const generateThumbnailsBtn = document.getElementById('generate-thumbnails-btn');
-    const generateThumbnailBtn = document.getElementById('generate-thumbnail-btn');
-    const downloadBtn = document.getElementById('download-btn');
-    const thumbnailsContainer = document.getElementById('thumbnails');
-    const timestampInput = document.getElementById('timestamp');
-    let videoElement = document.createElement('video');
-    let selectedThumbnail = null;
-    let thumbnailTimes = [];
-    let currentThumbnailIndex = 0;
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const upload = document.getElementById('upload');
+        const message = document.getElementById('message');
+        const generateThumbnailsBtn = document.getElementById('generate-thumbnails-btn');
+        const generateThumbnailBtn = document.getElementById('generate-thumbnail-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const thumbnailsContainer = document.getElementById('thumbnails');
+        const timestampInput = document.getElementById('timestamp');
+        let videoElement = document.createElement('video');
+        let selectedThumbnail = null;
+        let thumbnailTimes = [];
+        let currentThumbnailIndex = 0;
 
-    upload.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file && file.type.startsWith('video/')) {
-            videoElement.src = URL.createObjectURL(file);
-            message.style.display = 'none';
-            generateThumbnailsBtn.disabled = false;
-            generateThumbnailBtn.disabled = false;
-            timestampInput.disabled = false;
-            videoElement.addEventListener('loadeddata', () => {
-                console.log('Video metadata loaded');
-            });
-        } else {
-            alert('Please upload a valid video file.');
-        }
-    });
-
-    generateThumbnailsBtn.addEventListener('click', () => {
-        generateThumbnails();
-    });
-
-    generateThumbnailBtn.addEventListener('click', () => {
-        const timestamp = parseFloat(timestampInput.value);
-        if (isNaN(timestamp) || timestamp < 0 || timestamp > videoElement.duration) {
-            alert('Please enter a valid timestamp within the video duration.');
-        } else {
-            captureThumbnail(timestamp);
-        }
-    });
-
-    function generateThumbnails() {
-        thumbnailsContainer.innerHTML = '';
-        thumbnailTimes = [];
-        const duration = videoElement.duration;
-        for (let i = 0; i < 20; i++) {
-            thumbnailTimes.push((i / 20) * duration);
-        }
-        currentThumbnailIndex = 0;
-        captureNextThumbnail();
-    }
-
-    function captureNextThumbnail() {
-        if (currentThumbnailIndex < thumbnailTimes.length) {
-            captureThumbnail(thumbnailTimes[currentThumbnailIndex], true);
-            currentThumbnailIndex++;
-        }
-    }
-
-    function captureThumbnail(time, isBatch = false) {
-        videoElement.currentTime = time;
-        videoElement.addEventListener('seeked', function capture() {
-            const videoAspectRatio = videoElement.videoWidth / videoElement.videoHeight;
-            const canvasWidth = canvas.width;
-            const canvasHeight = canvasWidth / videoAspectRatio;
-            canvas.height = canvasHeight;
-
-            ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-            const thumbnailDataURL = canvas.toDataURL('image/png');
-            const img = document.createElement('img');
-            img.src = thumbnailDataURL;
-            img.className = 'thumbnail';
-            img.style.width = '90%';
-            img.addEventListener('click', () => selectThumbnail(img, thumbnailDataURL));
-            thumbnailsContainer.appendChild(img);
-            videoElement.removeEventListener('seeked', capture);
-
-            if (isBatch) {
-                setTimeout(captureNextThumbnail, 100); // Small delay to ensure next frame capture
+        upload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('video/')) {
+                videoElement.src = URL.createObjectURL(file);
+                message.style.display = 'none';
+                generateThumbnailsBtn.disabled = false;
+                generateThumbnailBtn.disabled = false;
+                timestampInput.disabled = false;
+                videoElement.addEventListener('loadeddata', () => {
+                    console.log('Video metadata loaded');
+                });
+            } else {
+                alert('Please upload a valid video file.');
             }
         });
-    }
 
-    function selectThumbnail(img, dataURL) {
-        if (selectedThumbnail) {
-            selectedThumbnail.classList.remove('selected');
+        generateThumbnailsBtn.addEventListener('click', () => {
+            generateThumbnails();
+        });
+
+        generateThumbnailBtn.addEventListener('click', () => {
+            const timestamp = parseFloat(timestampInput.value);
+            if (isNaN(timestamp) || timestamp < 0 || timestamp > videoElement.duration) {
+                alert('Please enter a valid timestamp within the video duration.');
+            } else {
+                captureThumbnail(timestamp);
+            }
+        });
+
+        function generateThumbnails() {
+            thumbnailsContainer.innerHTML = '';
+            thumbnailTimes = [];
+            const duration = videoElement.duration;
+            for (let i = 0; i < 20; i++) {
+                thumbnailTimes.push((i / 20) * duration);
+            }
+            currentThumbnailIndex = 0;
+            captureNextThumbnail();
         }
-        img.classList.add('selected');
-        selectedThumbnail = img;
-        downloadBtn.disabled = false;
-        downloadBtn.onclick = () => downloadThumbnail(dataURL);
-    }
 
-    function downloadThumbnail(dataURL) {
-        const link = document.createElement('a');
-        link.download = 'thumbnail.png';
-        link.href = dataURL;
-        link.click();
-    }
-</script>
+        function captureNextThumbnail() {
+            if (currentThumbnailIndex < thumbnailTimes.length) {
+                captureThumbnail(thumbnailTimes[currentThumbnailIndex], true);
+                currentThumbnailIndex++;
+            }
+        }
+
+        function captureThumbnail(time, isBatch = false) {
+            videoElement.currentTime = time;
+            videoElement.addEventListener('seeked', function capture() {
+                const videoAspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvasWidth / videoAspectRatio;
+                canvas.height = canvasHeight;
+
+                ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                const thumbnailDataURL = canvas.toDataURL('image/png');
+                const img = document.createElement('img');
+                img.src = thumbnailDataURL;
+                img.className = 'thumbnail';
+                img.style.width = '90%';
+                img.addEventListener('click', () => selectThumbnail(img, thumbnailDataURL));
+                thumbnailsContainer.appendChild(img);
+                videoElement.removeEventListener('seeked', capture);
+
+                if (isBatch) {
+                    setTimeout(captureNextThumbnail, 100); // Small delay to ensure next frame capture
+                }
+            });
+        }
+
+        function selectThumbnail(img, dataURL) {
+            if (selectedThumbnail) {
+                selectedThumbnail.classList.remove('selected');
+            }
+            img.classList.add('selected');
+            selectedThumbnail = img;
+            downloadBtn.disabled = false;
+            downloadBtn.onclick = () => downloadThumbnail(dataURL);
+        }
+
+        function downloadThumbnail(dataURL) {
+            const link = document.createElement('a');
+            link.download = 'thumbnail.png';
+            link.href = dataURL;
+            link.click();
+        }
+    </script>
 </body>
 </html>
