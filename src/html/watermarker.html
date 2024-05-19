@@ -12,85 +12,84 @@
 </head>
 
 <body>
-<div id="navbar">
-    <a id="header-link" href="../../index.html">
-        <span class="title">Image & Video Tools</span>
-    </a>
-    <div>
-        <a href="../../index.html">Image Resizer</a>
-        <a href="cropper.html">Image Cropper</a>
-        <a href="rotator.html">Image Rotator</a>
-        <a href="filter.html">Image Filters</a>
-        <a href="converter.html">Image Converter</a>
-        <a href="watermarker.html" style="text-decoration: underline; color: orangered">Image Watermarker</a>
-        <a href="thumbnail-generator.html">Thumbnail Generator</a>
-        <a href="sound-remover.html">Sound Remover</a>
-        <a href="about.html">About</a>
-    </div>
-</div>
-<div id="container">
-    <div id="controls">
-        <p><strong>Image Watermarking</strong></p>
-        <input type="file" id="upload" accept="image/*" style="color: black !important">
-        <p id="message">Please upload an image to add watermark.</p>
-        <label for="watermarkText">Watermark Text:</label>
-        <input type="text" id="watermarkText" placeholder="Enter watermark text" style="margin-top: 20px;">
-        <div style="margin-top: 10px">
-            <label for="fontSize">Font Size (in pixels):</label>
-            <input type="number" id="fontSize" value="48" min="10" max="100" style="width: 80px;">
-        </div>
+    <div id="navbar">
+        <a id="header-link" href="../../index.html">
+            <span class="title">Image & Video Tools</span>
+        </a>
         <div>
-            <label for="watermarkColor">Color:</label>
-            <input type="color" id="watermarkColor" value="#ffffff">
+            <a href="../../index.html">Image Resizer</a>
+            <a href="cropper.html">Image Cropper</a>
+            <a href="rotator.html">Image Rotator</a>
+            <a href="filter.html">Image Filters</a>
+            <a href="converter.html">Image Converter</a>
+            <a href="watermarker.html" style="text-decoration: underline; color: orangered">Image Watermarker</a>
+            <a href="thumbnail-generator.html">Thumbnail Generator</a>
+            <a href="sound-remover.html">Sound Remover</a>
+            <a href="about.html">About</a>
         </div>
-        <div style="margin-top: 10px">
-            <label for="xPosition">X Position:</label>
-            <input type="number" id="xPosition" placeholder="10" min="0" style="width: 80px;">
-        </div>
-        <div>
-            <label for="yPosition">Y Position:</label>
-            <input type="number" id="yPosition" placeholder="10" min="0" style="width: 80px;">
-        </div>
-        <div style="margin-top: 10px">
-            <label for="fontFamily">Font Family:</label>
-            <select id="fontFamily">
-                <option value="serif">Serif</option>
-                <option value="sans-serif">Sans-serif</option>
-                <option value="monospace">Monospace</option>
-                <option value="cursive">Cursive</option>
-                <option value="fantasy">Fantasy</option>
-                <option value="Poppins, sans-serif">Poppins</option>
-                <option value="Roboto, sans-serif">Roboto</option>
-                <option value="Open Sans, sans-serif">Open Sans</option>
-                <option value="Lato, sans-serif">Lato</option>
-                <option value="Montserrat, sans-serif">Montserrat</option>
-                <option value="Oswald, sans-serif">Oswald</option>
-            </select>
-        </div>
-        <div style="margin-top: 10px">
-            <label for="fontStyle">Font Style:</label>
-            <select id="fontStyle">
-                <option value="normal">Normal</option>
-                <option value="italic">Italic</option>
-                <option value="bold">Bold</option>
-                <option value="bold italic">Bold Italic</option>
-            </select>
-        </div>
-        <p id="instructions"></p>
-        <button id="watermark-btn" disabled>Add Watermark</button>
-        <button id="download-btn" disabled>Download Watermarked Image</button>
     </div>
-    <div id="preview">
-        <p><strong>Live Preview</strong></p>
-        <canvas id="canvas" width="500" height="500"></canvas>
+    <div id="container">
+        <div id="controls">
+            <p><strong>Image Watermarking</strong></p>
+            <input type="file" id="upload" accept="image/*" style="color: black !important">
+            <p id="message">Please upload an image to add watermark.</p>
+            <label for="watermarkText">Watermark Text:</label>
+            <input type="text" id="watermarkText" placeholder="Enter watermark text" style="margin-top: 20px;">
+            <div style="margin-top: 10px">
+                <label for="fontSize">Font Size (in pixels):</label>
+                <input type="number" id="fontSize" value="48" min="10" max="100" style="width: 80px;">
+            </div>
+            <div>
+                <label for="watermarkColor">Color:</label>
+                <input type="color" id="watermarkColor" value="#ffffff">
+            </div>
+            <div style="margin-top: 10px">
+                <label for="xPosition">X Position:</label>
+                <input type="number" id="xPosition" placeholder="10" min="0" style="width: 80px;">
+            </div>
+            <div>
+                <label for="yPosition">Y Position:</label>
+                <input type="number" id="yPosition" placeholder="10" min="0" style="width: 80px;">
+            </div>
+            <div style="margin-top: 10px">
+                <label for="fontFamily">Font Family:</label>
+                <select id="fontFamily">
+                    <option value="serif">Serif</option>
+                    <option value="sans-serif">Sans-serif</option>
+                    <option value="monospace">Monospace</option>
+                    <option value="cursive">Cursive</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="Poppins, sans-serif">Poppins</option>
+                    <option value="Roboto, sans-serif">Roboto</option>
+                    <option value="Open Sans, sans-serif">Open Sans</option>
+                    <option value="Lato, sans-serif">Lato</option>
+                    <option value="Montserrat, sans-serif">Montserrat</option>
+                    <option value="Oswald, sans-serif">Oswald</option>
+                </select>
+            </div>
+            <div style="margin-top: 10px">
+                <label for="fontStyle">Font Style:</label>
+                <select id="fontStyle">
+                    <option value="normal">Normal</option>
+                    <option value="italic">Italic</option>
+                    <option value="bold">Bold</option>
+                    <option value="bold italic">Bold Italic</option>
+                </select>
+            </div>
+            <p id="instructions"></p>
+            <button id="watermark-btn" disabled>Add Watermark</button>
+            <button id="download-btn" disabled>Download Watermarked Image</button>
+        </div>
+        <div id="preview">
+            <p><strong>Live Preview</strong></p>
+            <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
     </div>
-</div>
 
-<button id="dark-mode-toggle" onclick="toggleDarkMode()">
-    <i class="fas fa-moon"></i>
-</button>
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
 
-<script src="../js/watermarker.js"></script>
+    <script src="../js/watermarker.js"></script>
 </body>
-
 </html>
