@@ -40,7 +40,11 @@ upload.addEventListener('change', (e) => {
     }
 });
 
-processBtn.addEventListener('click', async () => {
+processBtn.addEventListener('click', () => {
+    handleProcessing();
+});
+
+async function handleProcessing() {
     processBtn.disabled = true;
     spinner.style.display = 'block';
     progress.style.display = 'flex';
@@ -66,6 +70,9 @@ processBtn.addEventListener('click', async () => {
         mediaRecorder.ondataavailable = (event) => {
             if (event.data.size > 0) {
                 chunks.push(event.data);
+                const percentComplete = ((chunks.length / (stream.getVideoTracks()[0].getSettings().frameRate * videoElement.duration)) * 100).toFixed(2);
+                progressText.textContent = `${(percentComplete * 3.5).toFixed(2)}%`;
+                progressBarFill.style.width = `${percentComplete * 3.5}%`;
             }
         };
 
@@ -79,15 +86,6 @@ processBtn.addEventListener('click', async () => {
             progress.style.display = 'none';
         };
 
-        mediaRecorder.ondataavailable = (event) => {
-            if (event.data.size > 0) {
-                chunks.push(event.data);
-                const percentComplete = ((chunks.length / (stream.getVideoTracks()[0].getSettings().frameRate * videoElement.duration)) * 100).toFixed(2);
-                progressText.textContent = `${percentComplete * 2}%`;
-                progressBarFill.style.width = `${percentComplete * 2}%`;
-            }
-        };
-
         mediaRecorder.start(100);
         videoElement.onended = () => {
             mediaRecorder.stop();
@@ -99,7 +97,7 @@ processBtn.addEventListener('click', async () => {
         progress.style.display = 'none';
         message.textContent = 'Error processing video.';
     }
-});
+}
 
 downloadBtn.addEventListener('click', () => {
     if (processedVideoBlob) {
