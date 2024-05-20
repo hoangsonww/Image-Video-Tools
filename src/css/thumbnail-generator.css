@@ -54,7 +54,7 @@ button {
 }
 
 .thumbnail.selected {
-    border-color: #007bff;
+    border: 5px solid #007bff;
 }
 
 #upload {
@@ -117,4 +117,11 @@ input[type="number"] {
         width: 95%;
         max-width: 100%;
     }
+}
+
+body.dark-mode #controls,
+body.dark-mode #preview {
+    background-color: #333;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }

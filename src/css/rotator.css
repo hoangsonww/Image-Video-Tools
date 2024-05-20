@@ -60,6 +60,7 @@ button:hover {
 #message {
     margin-top: 20px;
     color: red;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -81,4 +82,11 @@ button:hover {
     button {
         width: auto;
     }
+}
+
+body.dark-mode #controls,
+body.dark-mode #preview {
+    background-color: #333;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }

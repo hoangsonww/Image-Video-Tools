@@ -59,8 +59,8 @@ def main():
             height = int(input("Enter the new height: "))
             resize_image(input_path, output_path, width, height)
         elif choice == '2':
-            format = input("Enter the new image format (e.g., JPEG, PNG): ")
-            convert_image_format(input_path, output_path, format)
+            new_format = input("Enter the new image format (e.g., JPEG, PNG): ")
+            convert_image_format(input_path, output_path, new_format)
         elif choice == '3':
             degrees = float(input("Enter the number of degrees to rotate the image: "))
             rotate_image(input_path, output_path, degrees)
