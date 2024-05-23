@@ -50,6 +50,9 @@ canvas {
 
 #watermarkText {
     font: inherit;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding-left: 10px;
 }
 
 #watermark-btn, #download-btn {
