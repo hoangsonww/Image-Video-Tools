@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Error:', error);
-                message.textContent = 'Error removing background. Please try again.';
+                message.textContent = 'Error removing background. Your image might not have a clear subject. Please try again with a different image.';
                 message.style.display = 'block';
             })
             .finally(() => {
