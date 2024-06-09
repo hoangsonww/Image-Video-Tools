@@ -24,41 +24,42 @@
 </script>
 
 <body>
-<div id="navbar">
-    <a id="header-link" href="../../index.html">
-        <span class="title">Image & Video Tools</span>
-    </a>
-    <div>
-        <a href="../../index.html">Resizer</a>
-        <a href="cropper.html">Cropper</a>
-        <a href="rotator.html">Rotator</a>
-        <a href="filter.html">Filters</a>
-        <a href="converter.html">Format Converter</a>
-        <a href="background-remover.html" style="text-decoration: underline; color: orangered">Background Remover</a>
-        <a href="watermarker.html">Watermarker</a>
-        <a href="thumbnail-generator.html">Thumbnail Generator</a>
-        <a href="sound-remover.html">Sound Remover</a>
-        <a href="about.html">About</a>
+    <div id="navbar">
+        <a id="header-link" href="../../index.html">
+            <span class="title">Image & Video Tools</span>
+        </a>
+        <div>
+            <a href="../../index.html">Resizer</a>
+            <a href="cropper.html">Cropper</a>
+            <a href="rotator.html">Rotator</a>
+            <a href="filter.html">Filters</a>
+            <a href="converter.html">Format Converter</a>
+            <a href="background-remover.html" style="text-decoration: underline; color: orangered">Background Remover</a>
+            <a href="watermarker.html">Watermarker</a>
+            <a href="thumbnail-generator.html">Thumbnail Generator</a>
+            <a href="sound-remover.html">Sound Remover</a>
+            <a href="about.html">About</a>
+        </div>
     </div>
-</div>
-<div id="container">
-    <div id="controls">
-        <p><strong>Image Background Remover</strong></p>
-        <input type="file" id="upload" accept="image/*" style="color: black !important">
-        <p id="message">Please upload an image to remove background.</p>
-        <button id="remove-bg-btn" disabled>Remove Background</button>
-        <button id="download-btn" disabled>Download Image</button>
+    <div id="container">
+        <div id="controls">
+            <p><strong>Image Background Remover</strong></p>
+            <input type="file" id="upload" accept="image/*" style="color: black !important">
+            <p id="message">Please upload an image to remove background.</p>
+            <button id="remove-bg-btn" disabled>Remove Background</button>
+            <button id="download-btn" disabled>Download Image</button>
+        </div>
+        <div id="preview">
+            <p><strong>Live Preview</strong></p>
+            <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
     </div>
-    <div id="preview">
-        <p><strong>Live Preview</strong></p>
-        <canvas id="canvas" width="500" height="500"></canvas>
-    </div>
-</div>
 
-<script src="../js/background-remover.js"></script>
+    <script src="../js/background-remover.js"></script>
 
-<button id="dark-mode-toggle" onclick="toggleDarkMode()">
-    <i class="fas fa-moon"></i>
-</button>
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
 </body>
 </html>

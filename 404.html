@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Image & Video Tools</title>
+    <link rel="stylesheet" href="https://hoangsonww.github.io/Image-Video-Tools/src/css/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="description" content="The page you requested was not found on Image & Video Tools.">
+    <meta name="theme-color" content="#007bff">
+    <link rel="icon" type="image/x-icon" href="https://hoangsonww.github.io/Image-Video-Tools/assets/favicon.ico">
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <a id="header-link" href="https://hoangsonww.github.io/Image-Video-Tools/index.html">
+            <span class="title">Image & Video Tools</span>
+        </a>
+        <div>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/index.html">Resizer</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/cropper.html">Cropper</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/rotator.html">Rotator</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/filter.html">Filters</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/converter.html">Format Converter</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/background-remover.html">Background Remover</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/watermarker.html">Watermarker</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/thumbnail-generator.html">Thumbnail Generator</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/sound-remover.html">Sound Remover</a>
+            <a href="https://hoangsonww.github.io/Image-Video-Tools/src/html/about.html">About</a>
+        </div>
+    </div>
+
+    <div id="container" style="text-align: center; padding: 50px;">
+        <h1 style="color: orangered; margin-bottom: 20px;">404</h1>
+        <h2>Oops! Page Not Found</h2>
+        <p>The page you were looking for doesn't exist.</p>
+        <a href="index.html" class="btn" style="display: inline-block; margin-top: 20px;">Go back to Home</a>
+    </div>
+
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            }
+            else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+    </script>
+</body>
+
+</html>
