@@ -1,8 +1,8 @@
 # Image & Video Tools: Unleash the Power of Media
 
-📸 Welcome to the Image & Video Tools application. This application provides a **lightweight** but **comprehensive** suite of tools for manipulating images and videos directly in your browser. Below you will find detailed instructions on how to use each tool and information on the available features.
+📸 Welcome to the Image & Video Tools application. This application provides a **lightweight** and **comprehensive** suite of tools for manipulating images and videos directly in your browser. Below you will find detailed instructions on how to use each tool and information on the available features.
 
- This application is current live [here](https://hoangsonww.github.io/Image-Video-Tools/). Let's our tools cook your images & videos! 📸
+This application is current live [here](https://hoangsonww.github.io/Image-Video-Tools/). Let our tools transform your images & videos! 📸
 
 ## Table of Contents
 
@@ -15,6 +15,7 @@
     - [Image Filters](#image-filters)
     - [Image Converter](#image-converter)
     - [Image Watermarker](#image-watermarker)
+    - [Image Background Remover](#image-background-remover)
     - [Thumbnail Generator](#thumbnail-generator)
     - [Sound Remover](#sound-remover)
     - [Dark Mode](#dark-mode)
@@ -54,6 +55,10 @@ Rotate images in 90-degree increments. The current rotation angle is displayed, 
 ### Image Filters
 
 Apply various filters to images such as grayscale, sepia, invert, brightness, contrast, blur, saturate, and hue-rotate.
+
+### Image Background Remover
+
+Remove the background from images using a pre-trained machine learning model. The user can download the image with the background removed.
 
 ### Image Converter
 
@@ -141,6 +146,12 @@ To install and run this application locally, follow these steps:
 3. Adjust the font size, color, and position (X and Y coordinates) of the watermark.
 4. Click "Add Watermark" to apply the watermark.
 5. View the live preview and click "Download Watermarked Image" to download the watermarked image.
+
+#### Image Background Remover
+
+1. Choose an image by clicking the "Choose an image to remove background" input.
+2. Click "Remove Background" to process the image. It may take some time depending on the image size.
+3. Click "Download Image" to download the image with the background removed.
 
 #### Thumbnail Generator
 
