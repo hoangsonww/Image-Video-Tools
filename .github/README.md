@@ -56,6 +56,10 @@ Rotate images in 90-degree increments. The current rotation angle is displayed, 
 
 Apply various filters to images such as grayscale, sepia, invert, brightness, contrast, blur, saturate, and hue-rotate.
 
+### Image Background Remover
+
+Remove the background from images using a pre-trained machine learning model. The user can download the image with the background removed.
+
 ### Image Converter
 
 Convert images between different formats such as PNG, JPEG, BMP, GIF, WEBP, and TIFF.
