@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.createElement('div');
     loader.id = 'loader';
     loader.textContent = 'Removing background...';
-    loader.style.display = 'none'; // Initially hidden
+    loader.style.display = 'none';
     removeBgBtn.parentNode.insertBefore(loader, removeBgBtn.nextSibling);
 
     let imageUrl = '';
