@@ -204,7 +204,7 @@ I have spent a lot of time and effort to create this project, so I would appreci
 
 ## Contact
 
-If you have any questions or feedback, feel free to [contact me](https://github.com/hoangsonww).
+If you have any questions or feedback, feel free to [contact me](https://github.com/hoangsonww). I'll be happy to help!
 
 ---
 
