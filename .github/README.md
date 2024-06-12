@@ -23,8 +23,9 @@ This application is current live [here](https://hoangsonww.github.io/Image-Video
 5. [Usage](#usage)
     - [General Instructions](#general-instructions)
     - [Tool-Specific Instructions](#tool-specific-instructions)
-6. [Contributing](#contributing)
-7. [License](#license)
+6. [Python Implementation](#python-implementation)
+7. [Contributing](#contributing)
+8. [License](#license)
 
 ## User Interface
 
@@ -171,6 +172,17 @@ To install and run this application locally, follow these steps:
 
 1. Click the moon icon button to toggle between light and dark modes.
 2. Your preference will be saved and applied on future visits.
+
+## Python Implementation
+
+There are also Python implementations of some of the tools available in this application. You can find them in the `python` directory. The following tools are available:
+
+1. [Background Remover](../src/python/background_remover.py)
+2. [Image Resizer, Rotator, & Cropper](../src/python/image_tools.py)
+3. [Audio Remover](../src/python/remove_audio_from_video.py)
+4. [Thumbnail Generator](../src/python/thumbnail.py)
+
+Feel free to run these scripts locally on your machine to perform the desired tasks!
 
 ## Contributing
 
