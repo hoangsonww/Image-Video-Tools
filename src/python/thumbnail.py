@@ -1,6 +1,7 @@
 from moviepy.editor import VideoFileClip
 import os
 
+
 def generate_thumbnail(video_path, times, output_folder, img_format='jpeg'):
     """
     Generates thumbnails from a video at specified times.
@@ -20,11 +21,12 @@ def generate_thumbnail(video_path, times, output_folder, img_format='jpeg'):
             for i, time in enumerate(times):
                 # Generate thumbnail for each specified time
                 frame = video.get_frame(time)
-                output_path = os.path.join(output_folder, f"thumbnail_{i+1}.{img_format}")
+                output_path = os.path.join(output_folder, f"thumbnail_{i + 1}.{img_format}")
                 Image.fromarray(frame).save(output_path)
                 print(f"Thumbnail saved at {output_path}")
     except Exception as e:
         print(f"An error occurred while generating thumbnails: {e}")
+
 
 def main():
     video_path = input("Enter the path to the video file: ")
@@ -43,6 +45,7 @@ def main():
     img_format = input("Enter the image format for thumbnails (e.g., jpeg, png): ")
 
     generate_thumbnail(video_path, times, output_folder, img_format)
+
 
 if __name__ == "__main__":
     main()

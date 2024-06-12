@@ -1,6 +1,7 @@
 from moviepy.editor import VideoFileClip
 import os
 
+
 def remove_audio_from_video(input_path, output_path):
     """
     Removes the audio track from a video file.
@@ -35,6 +36,7 @@ def remove_audio_from_video(input_path, output_path):
         print(f"An error occurred: {e}")
         return False
 
+
 def main():
     # Get user input for file paths
     input_video_path = input("Enter the path to the video file: ")
@@ -51,6 +53,7 @@ def main():
         print("Process completed successfully.")
     else:
         print("Process failed. Please check the error messages above for details.")
+
 
 if __name__ == "__main__":
     main()

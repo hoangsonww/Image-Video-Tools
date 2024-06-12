@@ -1,6 +1,7 @@
 from PIL import Image
 import os
 
+
 def resize_image(input_path, output_path, new_width, new_height):
     """Resize the image to the specified dimensions."""
     try:
@@ -11,6 +12,7 @@ def resize_image(input_path, output_path, new_width, new_height):
     except Exception as e:
         print(f"Error resizing image: {e}")
 
+
 def convert_image_format(input_path, output_path, new_format):
     """Convert the image to a different format."""
     try:
@@ -19,6 +21,7 @@ def convert_image_format(input_path, output_path, new_format):
             print(f"Image converted to {new_format} and saved to {output_path}")
     except Exception as e:
         print(f"Error converting image format: {e}")
+
 
 def rotate_image(input_path, output_path, degrees):
     """Rotate the image by the specified number of degrees."""
@@ -29,6 +32,7 @@ def rotate_image(input_path, output_path, degrees):
             print(f"Image rotated by {degrees} degrees and saved to {output_path}")
     except Exception as e:
         print(f"Error rotating image: {e}")
+
 
 def main():
     while True:
@@ -64,6 +68,7 @@ def main():
         elif choice == '3':
             degrees = float(input("Enter the number of degrees to rotate the image: "))
             rotate_image(input_path, output_path, degrees)
+
 
 if __name__ == "__main__":
     main()
