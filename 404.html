@@ -19,6 +19,22 @@
             text-align: center;
             padding: 50px;
         }
+
+        .btn {
+            color: #333;
+        }
+
+        .btn:hover {
+            color: blue;
+        }
+
+        body.dark-mode .btn {
+            color: #fff;
+        }
+
+        body.dark-mode .btn:hover {
+            color: #007bff;
+        }
     </style>
 </head>
 
@@ -55,7 +71,7 @@
         <h1 style="color: orangered; margin-bottom: 20px;">404</h1>
         <h2>Oops! Page Not Found</h2>
         <p>The page you were looking for doesn't exist.</p>
-        <a href="index.html" class="btn" style="display: inline-block; margin-top: 20px;">Go back to Home</a>
+        <a href="index.html" class="btn" style="display: inline-block; margin-top: 20px;">Back to Home</a>
     </div>
 
     <button id="dark-mode-toggle" onclick="toggleDarkMode()">
