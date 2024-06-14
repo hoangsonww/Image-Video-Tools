@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-mode');
     }
+
+    document.getElementById('message1').style.display = 'none';
 });
 
 function toggleDarkMode() {
@@ -42,6 +44,8 @@ upload.addEventListener('change', (e) => {
 
 processBtn.addEventListener('click', () => {
     handleProcessing();
+
+    document.getElementById('message1').style.display = 'block';
 });
 
 async function handleProcessing() {

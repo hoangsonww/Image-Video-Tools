@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-mode');
     }
+
+    document.getElementById('message1').style.display = 'none';
 });
 
 function toggleDarkMode() {
@@ -10,8 +12,7 @@ function toggleDarkMode() {
 
     if (body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
-    }
-    else {
+    } else {
         localStorage.setItem('darkMode', 'disabled');
     }
 }
@@ -61,31 +62,65 @@ upload.addEventListener('change', (e) => {
     reader.readAsDataURL(e.target.files[0]);
 });
 
-function applyFilter(filter) {
-    ctx.drawImage(img, 0, 0);
-    ctx.filter = filter;
-    ctx.drawImage(img, 0, 0);
-    ctx.filter = 'none';
+const filterMap = {
+    grayscale: 'grayscale(100%)',
+    sepia: 'sepia(100%)',
+    invert: 'invert(100%)',
+    brightness: 'brightness(150%)',
+    contrast: 'contrast(150%)',
+    blur: 'blur(5px)',
+    saturate: 'saturate(200%)',
+    'hue-rotate': 'hue-rotate(90deg)',
+    opacity: 'opacity(50%)',
+    'drop-shadow': 'drop-shadow(16px 16px 20px blue)',
+    'grayscale-invert': 'grayscale(100%) invert(100%)',
+    'sepia-blur': 'sepia(100%) blur(5px)'
+};
+
+let currentFilter = '';
+
+function applyFilter(filterName) {
+    currentFilter = filterMap[filterName];
+    canvas.style.filter = currentFilter;
 }
 
-grayscaleBtn.addEventListener('click', () => applyFilter('grayscale(100%)'));
-sepiaBtn.addEventListener('click', () => applyFilter('sepia(100%)'));
-invertBtn.addEventListener('click', () => applyFilter('invert(100%)'));
-brightnessBtn.addEventListener('click', () => applyFilter('brightness(150%)'));
-contrastBtn.addEventListener('click', () => applyFilter('contrast(150%)'));
-blurBtn.addEventListener('click', () => applyFilter('blur(5px)'));
-saturateBtn.addEventListener('click', () => applyFilter('saturate(200%)'));
-hueRotateBtn.addEventListener('click', () => applyFilter('hue-rotate(90deg)'));
-opacityBtn.addEventListener('click', () => applyFilter('opacity(50%)'));
-dropShadowBtn.addEventListener('click', () => applyFilter('drop-shadow(16px 16px 20px blue)'));
-grayscaleInvertBtn.addEventListener('click', () => applyFilter('grayscale(100%) invert(100%)'));
-sepiaBlurBtn.addEventListener('click', () => applyFilter('sepia(100%) blur(5px)'));
+function getFilterCSS(filterName) {
+    return filterMap[filterName] || '';
+}
+
+function applyCSSFilterToCanvas(ctx, filterCSS) {
+    ctx.filter = filterCSS;
+}
+
+grayscaleBtn.addEventListener('click', () => applyFilter('grayscale'));
+sepiaBtn.addEventListener('click', () => applyFilter('sepia'));
+invertBtn.addEventListener('click', () => applyFilter('invert'));
+brightnessBtn.addEventListener('click', () => applyFilter('brightness'));
+contrastBtn.addEventListener('click', () => applyFilter('contrast'));
+blurBtn.addEventListener('click', () => applyFilter('blur'));
+saturateBtn.addEventListener('click', () => applyFilter('saturate'));
+hueRotateBtn.addEventListener('click', () => applyFilter('hue-rotate'));
+opacityBtn.addEventListener('click', () => applyFilter('opacity'));
+dropShadowBtn.addEventListener('click', () => applyFilter('drop-shadow'));
+grayscaleInvertBtn.addEventListener('click', () => applyFilter('grayscale-invert'));
+sepiaBlurBtn.addEventListener('click', () => applyFilter('sepia-blur'));
 
 downloadBtn.addEventListener('click', () => {
+    const filteredCanvas = document.createElement('canvas');
+    const filteredCtx = filteredCanvas.getContext('2d');
+
+    filteredCanvas.width = canvas.width;
+    filteredCanvas.height = canvas.height;
+
+    applyCSSFilterToCanvas(filteredCtx, currentFilter);
+    filteredCtx.drawImage(canvas, 0, 0);
+
     const link = document.createElement('a');
     link.download = 'filtered-image.png';
-    link.href = canvas.toDataURL();
+    link.href = filteredCanvas.toDataURL();
     link.click();
+
+    document.getElementById('message1').style.display = 'block';
 });
 
 function enableButtons() {
