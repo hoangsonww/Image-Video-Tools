@@ -13,13 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
     loader.style.display = 'none';
     removeBgBtn.parentNode.insertBefore(loader, removeBgBtn.nextSibling);
 
+    let currentImage = null;
     let imageUrl = '';
     let processedImageUrl = '';
 
     function updateImagePreview(src, container) {
+        container.innerHTML = '';
+        const header = document.createElement('h3');
+        header.textContent = 'Preview';
         const img = new Image();
         img.onload = function () {
-            container.innerHTML = '';
+            const aspectRatio = img.width / img.height;
+            img.width = container.offsetWidth;
+            img.height = container.offsetWidth / aspectRatio;
+            container.appendChild(header);
             container.appendChild(img);
         };
         img.src = src;
@@ -32,6 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.onload = function (e) {
                 imageUrl = e.target.result;
                 updateImagePreview(imageUrl, preview);
+
+                if (currentImage) {
+                    preview.removeChild(currentImage);
+                }
+
+                const newImage = preview.querySelector('img');
+                currentImage = newImage;
+
                 removeBgBtn.disabled = false;
                 message.style.display = 'none';
             };
