@@ -152,7 +152,8 @@ To install and run this application locally, follow these steps:
 
 1. Choose an image by clicking the "Choose an image to remove background" input.
 2. Click "Remove Background" to process the image. It may take some time depending on the image size.
-3. Click "Download Image" to download the image with the background removed.
+3. Click "Download Image" to download the image with the background removed. See the power of machine learning in action!
+4. **Note:** This tool uses a pre-trained machine learning model to remove the background from images. This model may not be available during high traffic times, so please be patient and try again later if needed.
 
 #### Thumbnail Generator
 
