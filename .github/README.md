@@ -23,9 +23,11 @@ This application is current live [here](https://hoangsonww.github.io/Image-Video
 5. [Usage](#usage)
     - [General Instructions](#general-instructions)
     - [Tool-Specific Instructions](#tool-specific-instructions)
-6. [Python Implementation](#python-implementation)
-7. [Contributing](#contributing)
-8. [License](#license)
+6. [Test Status](#test-status)
+7. [Python Implementation](#python-implementation)
+8. [Contributing](#contributing)
+9. [License](#license)
+10. [Contact](#contact)
 
 ## User Interface
 
@@ -184,6 +186,10 @@ To install and run this application locally, follow these steps:
 1. Click the moon icon button to toggle between light and dark modes.
 2. Your preference will be saved and applied on future visits.
 
+## Test Status
+
+[![Test Status](https://img.shields.io/badge/Test%20Status-Passing-brightgreen)](https://hoangsonww.github.io/Image-Video-Tools/)
+
 ## Python Implementation
 
 There are also Python implementations of some of the tools available in this application. You can find them in the `python` directory. The following tools are available:
@@ -222,8 +228,6 @@ We welcome contributions to improve this application. Please follow these steps:
 This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details. 
 
 **NOTE: Direct copying of this project is not prohibited for any purpose.** 
-
-I have spent a lot of time and effort to create this project, so I would appreciate it if you do not copy it directly. So, feel free to fork and contribute to this project.
 
 ## Contact
 
