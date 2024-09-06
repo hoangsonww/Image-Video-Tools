@@ -29,11 +29,17 @@ This application is current live [here](https://hoangsonww.github.io/Image-Video
 
 ## User Interface
 
+**Light mode:**
+
 <p align="center">
    <a href="https://hoangsonww.github.io/Image-Video-Tools/">
       <img src="../assets/UI.png" alt="Image & Video Tools User Interface" width="100%" style="border-radius: 8px">
    </a>
 </p>
+
+**Dark mode:**
+
+
 
 ## Introduction
 
