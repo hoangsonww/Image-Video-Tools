@@ -39,7 +39,11 @@ This application is current live [here](https://hoangsonww.github.io/Image-Video
 
 **Dark mode:**
 
-
+<p align="center">
+   <a href="https://hoangsonww.github.io/Image-Video-Tools/">
+      <img src="../assets/ui-dark.png" alt="Image & Video Tools User Interface (Dark Mode)" width="100%" style="border-radius: 8px">
+   </a>
+</p>
 
 ## Introduction
 
