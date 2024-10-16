@@ -2,7 +2,7 @@
 
 📸 Welcome to the Image & Video Tools application. This application provides a **lightweight** and **comprehensive** suite of tools for manipulating images and videos directly in your browser. Below you will find detailed instructions on how to use each tool and information on the available features.
 
-This application is current live [here](https://hoangsonww.github.io/Image-Video-Tools/). Let our tools transform your images & videos! 📸
+This application is currently live [here](https://hoangsonww.github.io/Image-Video-Tools/). Let our tools transform your images & videos! 📸
 
 ## Table of Contents
 
@@ -71,7 +71,7 @@ Apply various filters to images such as grayscale, sepia, invert, brightness, co
 
 ### Image Background Remover
 
-Remove the background from images using a pre-trained machine learning model. The user can download the image with the background removed.
+Remove the background from images using a pre-trained machine-learning model. The user can download the image with the background removed.
 
 ### Image Converter
 
@@ -165,7 +165,7 @@ To install and run this application locally, follow these steps:
 1. Choose an image by clicking the "Choose an image to remove background" input.
 2. Click "Remove Background" to process the image. It may take some time depending on the image size.
 3. Click "Download Image" to download the image with the background removed. See the power of machine learning in action!
-4. **Note:** This tool uses a pre-trained machine learning model to remove the background from images. This model may not be available during high traffic times, so please be patient and try again later if needed.
+4. **Note:** This tool uses a pre-trained machine learning model to remove the background from images. This model may not be available during high-traffic times, so please be patient and try again later if needed.
 
 #### Thumbnail Generator
 
@@ -235,4 +235,4 @@ If you have any questions, feedback, or concerns, please feel free to [contact m
 
 ---
 
-Created with ❤️ by [Son Nguyen](https://github.com/hoangsonww) in 2024. Thank you for visiting us today! 🚀
+Created with ❤️ by [Son Nguyen](https://github.com/hoangsonww) in 2024. Thank you for visiting today! 🚀
