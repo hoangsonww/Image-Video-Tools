@@ -2,7 +2,7 @@
 
 📸 Welcome to the Image & Video Tools application. This application provides a **lightweight** and **comprehensive** suite of tools for manipulating images and videos directly in your browser. Below you will find detailed instructions on how to use each tool and information on the available features.
 
-This application is currently live [here](https://hoangsonww.github.io/Image-Video-Tools/). Let our tools transform your images & videos! 📸
+This application is currently live [here](https://image-video-tools.onrender.com/). Let our tools transform your images & videos! 📸
 
 ## Table of Contents
 
@@ -231,7 +231,7 @@ This project is licensed under the MIT License. See the [LICENSE](../LICENSE) fi
 
 ## Contact
 
-If you have any questions, feedback, or concerns, please feel free to [contact me](https://github.com/hoangsonww). I'll be happy to help!
+If you have any questions, feedback, or concerns, please feel free to [contact me](https://github.com/hoangsonww) or open an issue in this repository. I'll be happy to help!
 
 ---
 
