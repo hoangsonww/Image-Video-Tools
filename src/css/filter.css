@@ -1,101 +1,101 @@
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 #container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 90vw;
-    max-width: calc(100vw - 20px);
-    margin: 10px auto;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 90vw;
+  max-width: calc(100vw - 20px);
+  margin: 10px auto;
+  gap: 20px;
 }
 
 button {
-    font: inherit;
+  font: inherit;
 }
 
 #controls {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 30%;
-    margin-left: 0;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 30%;
+  margin-left: 0;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 #filters {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #upload {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #preview {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 70%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    transition: background-color 0.3s ease;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  transition: background-color 0.3s ease;
 }
 
 canvas {
-    border: 1px solid black;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: none;
+  border: 1px solid black;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: none;
 }
 
 #download-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font: inherit;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font: inherit;
 }
 
 #download-btn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
-    #container {
-        flex-direction: column;
-        align-items: center;
-    }
+  #container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    #controls {
-        width: 95%;
-        max-width: 100%;
-    }
+  #controls {
+    width: 95%;
+    max-width: 100%;
+  }
 
-    #preview {
-        width: 95%;
-        max-width: 100%;
-    }
+  #preview {
+    width: 95%;
+    max-width: 100%;
+  }
 }
 
 body.dark-mode #controls,
 body.dark-mode #preview {
-    background-color: #333;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #333;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }

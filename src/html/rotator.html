@@ -4,13 +4,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image & Video Tools: Unleash the Power of Media</title>
-    <link rel="stylesheet" href="../css/common.css">
+    <title>Rotator - Image & Video Tools: Unleash the Power of Media</title>
+
+    <!-- Primary Styles & Scripts -->
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="../css/rotator.css">
     <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#007bff">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Rotate and flip your images instantly in-browser with our Image Rotator & Flipper tool. Simple, fast, and free." />
+    <meta name="keywords" content="image rotator, flip image, rotate image online, image editing, browser tool" />
+    <meta name="author" content="Son Nguyen Hoang" />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="3 days" />
+    <link rel="canonical" href="https://image-video-tools.onrender.com/src/html/rotator.html" />
+    <link rel="alternate" hreflang="en" href="https://image-video-tools.onrender.com/src/html/rotator.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Image & Video Tools" />
+    <meta property="og:title" content="Rotator - Image & Video Tools" />
+    <meta property="og:description" content="Rotate and flip your images instantly in-browser with our Image Rotator & Flipper tool." />
+    <meta property="og:url" content="https://image-video-tools.onrender.com/src/html/rotator.html" />
+    <meta property="og:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+    <meta property="og:image:alt" content="Screenshot of Rotator interface" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Son_Nguyen" />
+    <meta name="twitter:creator" content="@Son_Nguyen" />
+    <meta name="twitter:title" content="Rotator - Image & Video Tools" />
+    <meta name="twitter:description" content="Rotate and flip your images instantly in-browser with our Image Rotator & Flipper tool." />
+    <meta name="twitter:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://image-video-tools.onrender.com/#organization",
+          "name": "Image & Video Tools",
+          "url": "https://image-video-tools.onrender.com/",
+          "logo": "https://image-video-tools.onrender.com/assets/favicon.ico",
+          "sameAs": [
+            "https://github.com/hoangsonww",
+            "https://www.linkedin.com/in/hoangsonw/",
+            "https://twitter.com/Son_Nguyen"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://image-video-tools.onrender.com/#website",
+          "url": "https://image-video-tools.onrender.com/",
+          "name": "Image & Video Tools",
+          "description": "Comprehensive online suite for image & video manipulation.",
+          "publisher": { "@id": "https://image-video-tools.onrender.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://image-video-tools.onrender.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://image-video-tools.onrender.com/src/html/rotator.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://image-video-tools.onrender.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Rotator",
+              "item": "https://image-video-tools.onrender.com/src/html/rotator.html"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://image-video-tools.onrender.com/src/html/rotator.html#webpage",
+          "url": "https://image-video-tools.onrender.com/src/html/rotator.html",
+          "name": "Rotator - Image & Video Tools",
+          "isPartOf": { "@id": "https://image-video-tools.onrender.com/#website" },
+          "breadcrumb": { "@id": "https://image-video-tools.onrender.com/src/html/rotator.html#breadcrumb" },
+          "description": "Browser-based tool to rotate and flip images with live preview and download."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://image-video-tools.onrender.com/src/html/rotator.html#app",
+          "name": "Image Rotator & Flipper",
+          "description": "Rotate images in 90° increments and flip horizontally or vertically, entirely in the browser.",
+          "url": "https://image-video-tools.onrender.com/src/html/rotator.html",
+          "applicationCategory": "ImageProcessing",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Rotate 90° clockwise",
+            "Rotate 90° counterclockwise",
+            "Flip horizontal",
+            "Flip vertical",
+            "Live preview",
+            "Download as PNG"
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -19,7 +131,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-N2PN8MEEQV');
 </script>
 
@@ -60,6 +171,32 @@
     <button id="dark-mode-toggle" onclick="toggleDarkMode()">
         <i class="fas fa-moon"></i>
     </button>
+
+    <footer style="
+        background: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        color: #555;
+        font-size: 14px;
+        border-top: 1px solid #ddd;
+        margin-top: 40px;
+    ">
+        © 2025 Image &amp; Video Tools. Crafted with ❤️ by <a href="https://github.com/hoangsonww" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">Son Nguyen</a>. Follow us on 
+        <a href="https://www.linkedin.com/in/hoangsonw" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">LinkedIn</a> and contribute on 
+        <a href="https://github.com/hoangsonww/Image-Video-Tools" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">GitHub</a>.
+    </footer>
 
     <script src="../js/rotator.js"></script>
 </body>

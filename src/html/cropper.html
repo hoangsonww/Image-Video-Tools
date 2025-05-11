@@ -4,13 +4,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image & Video Tools: Unleash the Power of Media</title>
+    <title>Cropper - Image & Video Tools: Unleash the Power of Media</title>
+
+    <!-- Primary Styles & Scripts -->
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="../css/cropper.css">
     <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#007bff">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Crop your images easily in-browser with our intuitive Cropper tool. Adjust selection and download instantly.">
+    <meta name="keywords" content="image cropper, photo cropping, in-browser crop tool, image editing, crop images online">
+    <meta name="author" content="Son Nguyen Hoang">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="3 days">
+    <link rel="canonical" href="https://image-video-tools.onrender.com/src/html/cropper.html">
+    <link rel="alternate" hreflang="en" href="https://image-video-tools.onrender.com/src/html/cropper.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Image & Video Tools" />
+    <meta property="og:title" content="Cropper - Image & Video Tools" />
+    <meta property="og:description" content="Crop your images easily in-browser with our intuitive Cropper tool." />
+    <meta property="og:url" content="https://image-video-tools.onrender.com/src/html/cropper.html" />
+    <meta property="og:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+    <meta property="og:image:alt" content="Screenshot of Cropper interface" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hoangsonwww" />
+    <meta name="twitter:creator" content="@hoangsonwww" />
+    <meta name="twitter:title" content="Cropper - Image & Video Tools" />
+    <meta name="twitter:description" content="Crop your images easily in-browser with our intuitive Cropper tool." />
+    <meta name="twitter:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://image-video-tools.onrender.com/#organization",
+          "name": "Image & Video Tools",
+          "url": "https://image-video-tools.onrender.com/",
+          "logo": "https://image-video-tools.onrender.com/assets/favicon.ico",
+          "sameAs": [
+            "https://github.com/hoangsonww",
+            "https://www.linkedin.com/in/hoangsonw/",
+            "https://twitter.com/Son_Nguyen"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://image-video-tools.onrender.com/#website",
+          "url": "https://image-video-tools.onrender.com/",
+          "name": "Image & Video Tools",
+          "description": "Comprehensive online suite for image & video manipulation.",
+          "publisher": { "@id": "https://image-video-tools.onrender.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://image-video-tools.onrender.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://image-video-tools.onrender.com/src/html/cropper.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://image-video-tools.onrender.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Cropper",
+              "item": "https://image-video-tools.onrender.com/src/html/cropper.html"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://image-video-tools.onrender.com/src/html/cropper.html#webpage",
+          "url": "https://image-video-tools.onrender.com/src/html/cropper.html",
+          "name": "Cropper - Image & Video Tools",
+          "isPartOf": { "@id": "https://image-video-tools.onrender.com/#website" },
+          "breadcrumb": { "@id": "https://image-video-tools.onrender.com/src/html/cropper.html#breadcrumb" },
+          "description": "In-browser tool for cropping images with adjustable selection and instant download."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://image-video-tools.onrender.com/src/html/cropper.html#app",
+          "name": "Cropper",
+          "description": "Select and crop regions of your images directly in the browser and download as PNG.",
+          "url": "https://image-video-tools.onrender.com/src/html/cropper.html",
+          "applicationCategory": "ImageProcessing",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Interactive crop selection",
+            "Desktop browser support",
+            "Instant PNG download"
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -19,7 +128,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-N2PN8MEEQV');
 </script>
 
@@ -54,6 +162,32 @@
     <button id="dark-mode-toggle" onclick="toggleDarkMode()">
         <i class="fas fa-moon"></i>
     </button>
+
+    <footer style="
+        background: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        color: #555;
+        font-size: 14px;
+        border-top: 1px solid #ddd;
+        margin-top: 40px;
+    ">
+        © 2025 Image &amp; Video Tools. Crafted with ❤️ by <a href="https://github.com/hoangsonww" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">Son Nguyen</a>. Follow us on 
+        <a href="https://www.linkedin.com/in/hoangsonw" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">LinkedIn</a> and contribute on 
+        <a href="https://github.com/hoangsonww/Image-Video-Tools" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">GitHub</a>.
+    </footer>
 
     <script src="../js/cropper.js"></script>
 </body>

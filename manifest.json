@@ -27,7 +27,7 @@
       "src": "assets/icons/icon-512.webp",
       "sizes": "512x512",
       "type": "image/webp",
-        "purpose": "any maskable"
+      "purpose": "any maskable"
     }
   ],
   "start_url": "index.html",

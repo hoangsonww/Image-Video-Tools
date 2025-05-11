@@ -9,20 +9,20 @@ This application is currently live [here](https://image-video-tools.onrender.com
 1. [User Interface](#user-interface)
 2. [Introduction](#introduction)
 3. [Features](#features)
-    - [Image Resizer](#image-resizer)
-    - [Image Cropper](#image-cropper)
-    - [Image Rotator](#image-rotator)
-    - [Image Filters](#image-filters)
-    - [Image Converter](#image-converter)
-    - [Image Watermarker](#image-watermarker)
-    - [Image Background Remover](#image-background-remover)
-    - [Thumbnail Generator](#thumbnail-generator)
-    - [Sound Remover](#sound-remover)
-    - [Dark Mode](#dark-mode)
+   - [Image Resizer](#image-resizer)
+   - [Image Cropper](#image-cropper)
+   - [Image Rotator](#image-rotator)
+   - [Image Filters](#image-filters)
+   - [Image Converter](#image-converter)
+   - [Image Watermarker](#image-watermarker)
+   - [Image Background Remover](#image-background-remover)
+   - [Thumbnail Generator](#thumbnail-generator)
+   - [Sound Remover](#sound-remover)
+   - [Dark Mode](#dark-mode)
 4. [Installation](#installation)
 5. [Usage](#usage)
-    - [General Instructions](#general-instructions)
-    - [Tool-Specific Instructions](#tool-specific-instructions)
+   - [General Instructions](#general-instructions)
+   - [Tool-Specific Instructions](#tool-specific-instructions)
 6. [Test Status](#test-status)
 7. [Python Implementation](#python-implementation)
 8. [Contributing](#contributing)
@@ -98,11 +98,13 @@ Toggle between light and dark modes using a button with a moon icon. The user's 
 To install and run this application locally, follow these steps:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/hoangsonww/image-video-tools.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd image-video-tools
    ```
@@ -225,9 +227,9 @@ We welcome contributions to improve this application. Please follow these steps:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details. 
+This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
 
-**NOTE: Direct copying of this project is not prohibited for any purpose.** 
+**NOTE: Direct copying of this project is not prohibited for any purpose.**
 
 ## Contact
 

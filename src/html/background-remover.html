@@ -4,13 +4,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image & Video Tools: Unleash the Power of Media</title>
+    <title>Background Remover - Image & Video Tools: Unleash the Power of Media</title>
+
+    <!-- Primary Styles & Scripts -->
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/bg-remover.css">
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#007bff">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Easily remove backgrounds from your images with our AI-powered Background Remover tool. Fast, free, and browser-based.">
+    <meta name="keywords" content="background remover, image background removal, AI background removal, image tools, photo editing, transparent background">
+    <meta name="author" content="Son Nguyen Hoang">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="3 days">
+    <link rel="canonical" href="https://image-video-tools.onrender.com/src/html/background-remover.html">
+    <link rel="alternate" hreflang="en" href="https://image-video-tools.onrender.com/src/html/background-remover.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Image & Video Tools" />
+    <meta property="og:title" content="Background Remover - Image & Video Tools" />
+    <meta property="og:description" content="Use our AI-powered Background Remover to instantly erase backgrounds from your photos in the browser." />
+    <meta property="og:url" content="https://image-video-tools.onrender.com/src/html/background-remover.html" />
+    <meta property="og:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+    <meta property="og:image:alt" content="Screenshot of Background Remover interface" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hoangsonwww" />
+    <meta name="twitter:creator" content="@hoangsonwww" />
+    <meta name="twitter:title" content="Background Remover - Image & Video Tools" />
+    <meta name="twitter:description" content="Use our AI-powered Background Remover to instantly erase backgrounds from your photos in the browser." />
+    <meta name="twitter:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://image-video-tools.onrender.com/#organization",
+          "name": "Image & Video Tools",
+          "url": "https://image-video-tools.onrender.com/",
+          "logo": "https://image-video-tools.onrender.com/assets/favicon.ico",
+          "sameAs": [
+            "https://github.com/hoangsonww",
+            "https://www.linkedin.com/in/hoangsonw/",
+            "https://twitter.com/Son_Nguyen"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://image-video-tools.onrender.com/#website",
+          "url": "https://image-video-tools.onrender.com/",
+          "name": "Image & Video Tools",
+          "description": "Comprehensive online suite for image & video manipulation.",
+          "publisher": { "@id": "https://image-video-tools.onrender.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://image-video-tools.onrender.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://image-video-tools.onrender.com/src/html/background-remover.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://image-video-tools.onrender.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Background Remover",
+              "item": "https://image-video-tools.onrender.com/src/html/background-remover.html"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://image-video-tools.onrender.com/src/html/background-remover.html#webpage",
+          "url": "https://image-video-tools.onrender.com/src/html/background-remover.html",
+          "name": "Background Remover - Image & Video Tools",
+          "isPartOf": { "@id": "https://image-video-tools.onrender.com/#website" },
+          "breadcrumb": { "@id": "https://image-video-tools.onrender.com/src/html/background-remover.html#breadcrumb" },
+          "description": "AI-powered tool to remove backgrounds from images directly in your browser."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://image-video-tools.onrender.com/src/html/background-remover.html#app",
+          "name": "Background Remover",
+          "description": "Remove image backgrounds instantly with AI, no download required.",
+          "url": "https://image-video-tools.onrender.com/src/html/background-remover.html",
+          "applicationCategory": "ImageProcessing",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "AI-powered background removal",
+            "No uploads to server",
+            "Download transparent PNG"
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -19,7 +128,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-N2PN8MEEQV');
 </script>
 
@@ -57,9 +165,34 @@
 
     <script src="../js/background-remover.js"></script>
 
+    <footer style="
+        background: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        color: #555;
+        font-size: 14px;
+        border-top: 1px solid #ddd;
+        margin-top: 40px;
+    ">
+        © 2025 Image &amp; Video Tools. Crafted with ❤️ by <a href="https://github.com/hoangsonww" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">Son Nguyen</a>. Follow us on 
+        <a href="https://www.linkedin.com/in/hoangsonw" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">LinkedIn</a> and contribute on 
+        <a href="https://github.com/hoangsonww/Image-Video-Tools" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">GitHub</a>.
+    </footer>
+
     <button id="dark-mode-toggle" onclick="toggleDarkMode()">
         <i class="fas fa-moon"></i>
     </button>
-
 </body>
 </html>

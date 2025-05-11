@@ -1,74 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Image & Video Tools: Unleash the Power of Media</title>
-        <link rel="stylesheet" href="../css/common.css">
-        <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <link rel="stylesheet" href="../css/sound-remover.css">
-        <link rel="manifest" href="../../manifest.json">
-        <meta name="theme-color" content="#007bff">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sound Remover - Image & Video Tools: Unleash the Power of Media</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2PN8MEEQV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push( arguments ); }
-        gtag( 'js', new Date() );
+    <!-- Primary Styles & Scripts -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/sound-remover.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="theme-color" content="#007bff">
 
-        gtag( 'config', 'G-N2PN8MEEQV' );
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Remove audio tracks from your videos instantly in-browser. AI-free, fast, and secure sound removal tool." />
+    <meta name="keywords" content="sound remover, audio remover, remove audio from video, video editing, browser tool, silent video" />
+    <meta name="author" content="Son Nguyen Hoang" />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="3 days" />
+    <link rel="canonical" href="https://image-video-tools.onrender.com/src/html/sound-remover.html" />
+    <link rel="alternate" hreflang="en" href="https://image-video-tools.onrender.com/src/html/sound-remover.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Image & Video Tools" />
+    <meta property="og:title" content="Sound Remover - Image & Video Tools" />
+    <meta property="og:description" content="Strip audio tracks from your videos directly in the browser. Fast, free, and secure." />
+    <meta property="og:url" content="https://image-video-tools.onrender.com/src/html/sound-remover.html" />
+    <meta property="og:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+    <meta property="og:image:alt" content="Screenshot of Sound Remover interface" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hoangsonwww" />
+    <meta name="twitter:creator" content="@hoangsonwww" />
+    <meta name="twitter:title" content="Sound Remover - Image & Video Tools" />
+    <meta name="twitter:description" content="Strip audio tracks from your videos directly in the browser. Fast, free, and secure." />
+    <meta name="twitter:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://image-video-tools.onrender.com/#organization",
+          "name": "Image & Video Tools",
+          "url": "https://image-video-tools.onrender.com/",
+          "logo": "https://image-video-tools.onrender.com/assets/favicon.ico",
+          "sameAs": [
+            "https://github.com/hoangsonww",
+            "https://www.linkedin.com/in/hoangsonw/",
+            "https://twitter.com/Son_Nguyen"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://image-video-tools.onrender.com/#website",
+          "url": "https://image-video-tools.onrender.com/",
+          "name": "Image & Video Tools",
+          "description": "Comprehensive online suite for image & video manipulation.",
+          "publisher": { "@id": "https://image-video-tools.onrender.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://image-video-tools.onrender.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://image-video-tools.onrender.com/src/html/sound-remover.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://image-video-tools.onrender.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sound Remover",
+              "item": "https://image-video-tools.onrender.com/src/html/sound-remover.html"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://image-video-tools.onrender.com/src/html/sound-remover.html#webpage",
+          "url": "https://image-video-tools.onrender.com/src/html/sound-remover.html",
+          "name": "Sound Remover - Image & Video Tools",
+          "isPartOf": { "@id": "https://image-video-tools.onrender.com/#website" },
+          "breadcrumb": { "@id": "https://image-video-tools.onrender.com/src/html/sound-remover.html#breadcrumb" },
+          "description": "In-browser tool to remove audio tracks from video files, with progress indicator and download."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://image-video-tools.onrender.com/src/html/sound-remover.html#app",
+          "name": "Sound Remover",
+          "description": "Remove audio tracks from your videos directly in the browser with a progress bar and instant download.",
+          "url": "https://image-video-tools.onrender.com/src/html/sound-remover.html",
+          "applicationCategory": "VideoEditing",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Remove audio from video files",
+            "Progress indicator during processing",
+            "Download silent videos",
+            "Supports common video formats"
+          ]
+        }
+      ]
+    }
     </script>
+</head>
 
-    <body>
-        <div id="navbar">
-            <a id="header-link" href="../../index.html">
-                <span class="title">Image & Video Tools</span>
-            </a>
-            <div>
-                <a href="../../index.html">Resizer</a>
-                <a href="cropper.html">Cropper</a>
-                <a href="rotator.html">Rotator</a>
-                <a href="filter.html">Filters</a>
-                <a href="converter.html">Format Converter</a>
-                <a href="background-remover.html">Background Remover</a>
-                <a href="watermarker.html">Watermarker</a>
-                <a href="thumbnail-generator.html">Thumbnail Generator</a>
-                <a href="sound-remover.html" style="text-decoration: underline; color: orangered">Sound Remover</a>
-                <a href="about.html">About</a>
-            </div>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N2PN8MEEQV"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N2PN8MEEQV');
+</script>
+
+<body>
+    <div id="navbar">
+        <a id="header-link" href="../../index.html">
+            <span class="title">Image & Video Tools</span>
+        </a>
+        <div>
+            <a href="../../index.html">Resizer</a>
+            <a href="cropper.html">Cropper</a>
+            <a href="rotator.html">Rotator</a>
+            <a href="filter.html">Filters</a>
+            <a href="converter.html">Format Converter</a>
+            <a href="background-remover.html">Background Remover</a>
+            <a href="watermarker.html">Watermarker</a>
+            <a href="thumbnail-generator.html">Thumbnail Generator</a>
+            <a href="sound-remover.html" style="text-decoration: underline; color: orangered">Sound Remover</a>
+            <a href="about.html">About</a>
         </div>
-        <div id="container">
-            <div id="controls">
-                <p><strong>Remove Audio from Video</strong></p>
-                <input type="file" id="upload" accept="video/*" style="color: black !important">
-                <p id="upload-message">Please upload a video to remove its audio.</p>
-                <button id="process-btn" disabled>Remove Audio</button>
-                <p id="message1" style="text-align: center">Note: Currently, our tool does NOT support Safari. We apologize for the inconvenience.</p>
-                <div id="spinner" class="spinner" style="display: none;"></div>
-                <div class="progress">
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill"></div>
-                    </div>
-                    <p id="progress-text">0%</p>
+    </div>
+    <div id="container">
+        <div id="controls">
+            <p><strong>Remove Audio from Video</strong></p>
+            <input type="file" id="upload" accept="video/*" style="color: black !important">
+            <p id="upload-message">Please upload a video to remove its audio.</p>
+            <button id="process-btn" disabled>Remove Audio</button>
+            <p id="message1" style="text-align: center">Note: Currently, our tool does NOT support Safari. We apologize for the inconvenience.</p>
+            <div id="spinner" class="spinner" style="display: none;"></div>
+            <div class="progress">
+                <div class="progress-bar">
+                    <div class="progress-bar-fill"></div>
                 </div>
-                <p id="message"></p>
-                <button id="download-btn" disabled>Download Video</button>
+                <p id="progress-text">0%</p>
             </div>
-            <div id="preview">
-                <p><strong>Preview</strong></p>
-                <video id="output-video" controls></video>
-            </div>
+            <p id="message"></p>
+            <button id="download-btn" disabled>Download Video</button>
         </div>
+        <div id="preview">
+            <p><strong>Preview</strong></p>
+            <video id="output-video" controls></video>
+        </div>
+    </div>
 
-        <button id="dark-mode-toggle" onclick="toggleDarkMode()">
-            <i class="fas fa-moon"></i>
-        </button>
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
 
-        <script src="../js/sound-remover.js"></script>
-    </body>
+    <footer style="
+        background: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        color: #555;
+        font-size: 14px;
+        border-top: 1px solid #ddd;
+        margin-top: 40px;
+    ">
+        © 2025 Image &amp; Video Tools. Crafted with ❤️ by <a href="https://github.com/hoangsonww" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">Son Nguyen</a>. Follow us on 
+        <a href="https://www.linkedin.com/in/hoangsonw" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">LinkedIn</a> and contribute on 
+        <a href="https://github.com/hoangsonww/Image-Video-Tools" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">GitHub</a>.
+    </footer>
+
+    <script src="../js/sound-remover.js"></script>
+</body>
 
 </html>

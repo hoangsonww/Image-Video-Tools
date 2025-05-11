@@ -2,91 +2,217 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image & Video Tools: Unleash the Power of Media</title>
-    <script src="src/js/resizer.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image &amp; Video Tools: Unleash the Power of Media</title>
 
-    <link rel="stylesheet" href="src/css/common.css">
-    <link rel="stylesheet" href="src/css/resizer.css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="canonical" href="https://hoangsonww.github.io/Image-Video-Tools/">
+  <!-- Primary Styles & Scripts -->
+  <script src="src/js/resizer.js" defer></script>
+  <link rel="stylesheet" href="src/css/common.css">
+  <link rel="stylesheet" href="src/css/resizer.css">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
-    <meta name="description" content="Your comprehensive tools for resizing, cropping, rotating, filtering, converting, and watermarking images and videos.">
-    <meta property="og:title" content="Image & Video Tools: Unleash the Power of Media" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta http-equiv="content-language" content="en" />
-    <meta property="og:description" content="Your comprehensive tools for resizing, cropping, rotating, filtering, converting, and watermarking images and videos." />
-    <meta property="og:url" content="https://hoangsonww.github.io/Image-Video-Tools/" />
-    <meta property="og:site_name" content="Image & Video Tools" />
-    <meta property="og:image" content="https://hoangsonww.github.io/Image-Video-Tools/assets/image.webp" />
-    <meta property="og:image:alt" content="Image & Video Tools" />
-    <meta name="keywords" content="image, video, tools, resizer, cropper, rotator, filter, converter, watermarker, thumbnail, generator, sound, remover, about">
-    <meta name="author" content="Son Nguyen Hoang">
-    <meta name="robots" content="index, follow">
-    <meta name="rating" content="General">
-    <meta name="revisit-after" content="3 days">
-    <meta name="distribution" content="global">
-    <meta name="language" content="en">
-    <meta name="theme-color" content="#007bff">
-</head>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Your comprehensive tools for resizing, cropping, rotating, filtering, converting, and watermarking images and videos.">
+  <meta name="keywords" content="image tools, video tools, resizer, cropper, rotator, filters, converter, watermark, thumbnail generator, background remover, sound remover">
+  <meta name="author" content="Son Nguyen Hoang">
+  <meta name="robots" content="index, follow">
+  <meta name="revisit-after" content="3 days">
+  <meta name="theme-color" content="#007bff">
+  <link rel="canonical" href="https://image-video-tools.onrender.com/">
+  <link rel="alternate" hreflang="en" href="https://image-video-tools.onrender.com/">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N2PN8MEEQV"></script>
-<script>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Image &amp; Video Tools" />
+  <meta property="og:title" content="Image &amp; Video Tools: Unleash the Power of Media" />
+  <meta property="og:description" content="Your comprehensive tools for resizing, cropping, rotating, filtering, converting, and watermarking images and videos." />
+  <meta property="og:url" content="https://image-video-tools.onrender.com/" />
+  <meta property="og:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+  <meta property="og:image:alt" content="Screenshot of Image & Video Tools interface" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@hoangsonwww" />
+  <meta name="twitter:creator" content="@hoangsonwww" />
+  <meta name="twitter:title" content="Image &amp; Video Tools: Unleash the Power of Media" />
+  <meta name="twitter:description" content="Your comprehensive tools for resizing, cropping, rotating, filtering, converting, and watermarking images and videos." />
+  <meta name="twitter:image" content="https://image-video-tools.onrender.com/assets/image.webp" />
+
+  <!-- PWA & Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Image &amp; Video Tools">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Extra Mobile & Accessibility -->
+  <meta http-equiv="content-language" content="en">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="General">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://image-video-tools.onrender.com/#organization",
+        "name": "Image & Video Tools",
+        "url": "https://image-video-tools.onrender.com/",
+        "logo": "https://image-video-tools.onrender.com/assets/favicon.ico",
+        "sameAs": [
+          "https://github.com/hoangsonww",
+          "https://www.linkedin.com/in/hoangsonw/",
+          "https://twitter.com/Son_Nguyen"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://image-video-tools.onrender.com/#website",
+        "url": "https://image-video-tools.onrender.com/",
+        "name": "Image & Video Tools",
+        "description": "Comprehensive online suite for image & video manipulation.",
+        "publisher": { "@id": "https://image-video-tools.onrender.com/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://image-video-tools.onrender.com/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://image-video-tools.onrender.com/#webpage",
+        "url": "https://image-video-tools.onrender.com/",
+        "name": "Image & Video Resizer",
+        "isPartOf": { "@id": "https://image-video-tools.onrender.com/#website" },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",      "item": "https://image-video-tools.onrender.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Resizer",   "item": "https://image-video-tools.onrender.com/" }
+          ]
+        },
+        "potentialAction": [{ "@type": "ReadAction", "target": ["https://image-video-tools.onrender.com/"] }]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://image-video-tools.onrender.com/#tools",
+        "itemListElement": [
+          {"@type":"SiteNavigationElement","position":1,"name":"Resizer","url":"https://image-video-tools.onrender.com/"},
+          {"@type":"SiteNavigationElement","position":2,"name":"Cropper","url":"https://image-video-tools.onrender.com/src/html/cropper.html"},
+          {"@type":"SiteNavigationElement","position":3,"name":"Rotator","url":"https://image-video-tools.onrender.com/src/html/rotator.html"},
+          {"@type":"SiteNavigationElement","position":4,"name":"Filters","url":"https://image-video-tools.onrender.com/src/html/filter.html"},
+          {"@type":"SiteNavigationElement","position":5,"name":"Converter","url":"https://image-video-tools.onrender.com/src/html/converter.html"},
+          {"@type":"SiteNavigationElement","position":6,"name":"Background Remover","url":"https://image-video-tools.onrender.com/src/html/background-remover.html"},
+          {"@type":"SiteNavigationElement","position":7,"name":"Watermarker","url":"https://image-video-tools.onrender.com/src/html/watermarker.html"},
+          {"@type":"SiteNavigationElement","position":8,"name":"Thumbnail Generator","url":"https://image-video-tools.onrender.com/src/html/thumbnail-generator.html"},
+          {"@type":"SiteNavigationElement","position":9,"name":"Sound Remover","url":"https://image-video-tools.onrender.com/src/html/sound-remover.html"},
+          {"@type":"SiteNavigationElement","position":10,"name":"About","url":"https://image-video-tools.onrender.com/src/html/about.html"}
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://image-video-tools.onrender.com/#resizer-app",
+        "name": "Image Resizer",
+        "description": "Resize images to custom dimensions with optional aspect ratio lock and live preview.",
+        "url": "https://image-video-tools.onrender.com/",
+        "applicationCategory": "ImageProcessing",
+        "operatingSystem": "All",
+        "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+        "featureList": ["Resize images","Maintain aspect ratio","Live preview"]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2PN8MEEQV"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-N2PN8MEEQV');
-</script>
+  </script>
+</head>
 
 <body>
-    <div id="navbar">
-        <a id="header-link" href="index.html">
-            <span class="title">Image & Video Tools</span>
-        </a>
-        <div>
-            <a href="index.html" style="text-decoration: underline; color: orangered">Resizer</a>
-            <a href="src/html/cropper.html">Cropper</a>
-            <a href="src/html/rotator.html">Rotator</a>
-            <a href="src/html/filter.html">Filters</a>
-            <a href="src/html/converter.html">Format Converter</a>
-            <a href="src/html/background-remover.html">Background Remover</a>
-            <a href="src/html/watermarker.html">Watermarker</a>
-            <a href="src/html/thumbnail-generator.html">Thumbnail Generator</a>
-            <a href="src/html/sound-remover.html">Sound Remover</a>
-            <a href="src/html/about.html">About</a>
-        </div>
-    </div>
-    <div id="container">
-        <div id="inputSection">
-            <p><strong>Choose an image to resize:</strong></p>
-            <input type="file" id="imageInput" accept="image/*" style="color: black !important">
-            <p><strong>Select your desired dimensions:</strong></p>
-            <div id="dimensionsInput">
-                <label for="width">Width:</label>
-                <input type="number" id="width" value="300">
-                <label for="height">Height:</label>
-                <input type="number" id="height" value="300">
-                <input type="checkbox" id="aspectRatio" checked>
-                <label for="aspectRatio">Maintain Aspect Ratio</label>
-            </div>
-            <p id="imageSizeDisplay"><strong>Estimated Image Size:</strong> <span id="currentImageSize">0 KB</span></p>
-            <button onclick="resizeImage()" style="font: inherit">Resize Image</button>
-        </div>
-        <div id="previewSection">
-            <p id="previewTitle">Live Preview</p>
-            <canvas id="canvas"></canvas>
-        </div>
-    </div>
+  <!-- Navbar -->
+  <div id="navbar">
+    <a id="header-link" href="index.html"><span class="title">Image &amp; Video Tools</span></a>
+    <nav>
+      <a href="index.html" style="text-decoration: underline; color: orangered">Resizer</a>
+      <a href="src/html/cropper.html">Cropper</a>
+      <a href="src/html/rotator.html">Rotator</a>
+      <a href="src/html/filter.html">Filters</a>
+      <a href="src/html/converter.html">Format Converter</a>
+      <a href="src/html/background-remover.html">Background Remover</a>
+      <a href="src/html/watermarker.html">Watermarker</a>
+      <a href="src/html/thumbnail-generator.html">Thumbnail Generator</a>
+      <a href="src/html/sound-remover.html">Sound Remover</a>
+      <a href="src/html/about.html">About</a>
+    </nav>
+  </div>
 
-    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i>
-    </button>
+  <!-- Main Container -->
+  <div id="container">
+    <section id="inputSection">
+      <p><strong>Choose an image to resize:</strong></p>
+      <input type="file" id="imageInput" accept="image/*" style="color: black !important">
+      <p><strong>Select your desired dimensions:</strong></p>
+      <div id="dimensionsInput">
+        <label for="width">Width:</label>
+        <input type="number" id="width" value="300">
+        <label for="height">Height:</label>
+        <input type="number" id="height" value="300">
+        <input type="checkbox" id="aspectRatio" checked>
+        <label for="aspectRatio">Maintain Aspect Ratio</label>
+      </div>
+      <p id="imageSizeDisplay"><strong>Estimated Image Size:</strong> <span id="currentImageSize">0 KB</span></p>
+      <button onclick="resizeImage()" style="font: inherit">Resize Image</button>
+    </section>
+
+    <section id="previewSection">
+      <p id="previewTitle">Live Preview</p>
+      <canvas id="canvas"></canvas>
+    </section>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <footer style="
+        background: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        color: #555;
+        font-size: 14px;
+        border-top: 1px solid #ddd;
+        margin-top: 40px;
+    ">
+        © 2025 Image &amp; Video Tools. Crafted with ❤️ by <a href="https://github.com/hoangsonww" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">Son Nguyen</a>. Follow us on 
+        <a href="https://www.linkedin.com/in/hoangsonw" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">LinkedIn</a> and contribute on 
+        <a href="https://github.com/hoangsonww/Image-Video-Tools" style="
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        ">GitHub</a>.
+    </footer>
 </body>
 
 </html>

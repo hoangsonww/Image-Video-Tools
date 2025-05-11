@@ -1,94 +1,94 @@
 #container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 90vw;
-    margin: 10px auto;
-    max-width: calc(100vw - 20px);
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 90vw;
+  margin: 10px auto;
+  max-width: calc(100vw - 20px);
+  gap: 20px;
 }
 
 #controls {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 30%;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 30%;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 #preview {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 70%;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 70%;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 #upload {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 canvas {
-    border: 1px solid black;
-    max-width: 100%;
-    max-height: 100%;
-    display: none;
+  border: 1px solid black;
+  max-width: 100%;
+  max-height: 100%;
+  display: none;
 }
 
 button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font: inherit;
-    width: 100%;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  width: 100%;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 #message {
-    margin-top: 20px;
-    color: red;
-    text-align: center;
+  margin-top: 20px;
+  color: red;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
-    #container {
-        flex-direction: column;
-        align-items: center;
-    }
+  #container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    #controls {
-        width: 95%;
-        max-width: 100%;
-    }
+  #controls {
+    width: 95%;
+    max-width: 100%;
+  }
 
-    #preview {
-        width: 95%;
-        max-width: 100%;
-    }
+  #preview {
+    width: 95%;
+    max-width: 100%;
+  }
 
-    button {
-        width: auto;
-    }
+  button {
+    width: auto;
+  }
 }
 
 body.dark-mode #controls,
 body.dark-mode #preview {
-    background-color: #333;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #333;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
