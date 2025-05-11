@@ -1,0 +1,81 @@
+name: CI/CD for Image & Video Tools
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code from repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js (if needed for your app)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Modify the Node version if required
+
+      # Install dependencies (if applicable)
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Linting, Tests, or build your app
+      - name: Run tests or build
+        run: |
+          npm run build # Add your build or test command if necessary
+
+      # Build Docker image (if deploying with Docker)
+      - name: Build Docker image
+        run: |
+          docker build -t image-video-tools .
+
+      # Push Docker image to DockerHub (optional)
+      - name: Push Docker image to DockerHub
+        if: github.event_name == 'push'
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker tag image-video-tools ${{ secrets.DOCKER_USERNAME }}/image-video-tools:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/image-video-tools:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # Checkout code from repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Deploy to production server (if needed, using SSH or another method)
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no user@yourserver.com 'bash -s' < deploy.sh
+
+      # Optionally, you can also push to a static hosting service (Netlify, Vercel, etc.)
+      # For example, to deploy to Netlify:
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2
+        with:
+          publish-dir: ./public # Specify your publish directory
+          production-branch: main
+          deploy-token: ${{ secrets.NETLIFY_TOKEN }} # Store in GitHub Secrets
+
+  # Notifications (optional)
+  notify:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Send Slack Notification (or email)
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
