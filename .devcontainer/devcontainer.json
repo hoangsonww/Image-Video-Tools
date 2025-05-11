@@ -1,0 +1,31 @@
+{
+  "name": "Image & Video Tools DevContainer",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "appPort": [8080],
+  "extensions": [
+      "ms-vscode.vscode-node-try",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+  ],
+  "settings": {
+      "editor.formatOnSave": true,
+      "eslint.enable": true
+  },
+  "runArgs": [
+      "--env-file",
+      ".env"
+  ],
+  "postCreateCommand": "npm install", 
+  "mounts": [
+      "source=${localWorkspaceFolder}/,target=/workspace,type=bind"
+  ],
+  "forwardPorts": [
+      8080
+  ],
+  "remoteUser": "node",
+  "workspaceFolder": "/workspace",
+  "features": {
+      "node": "14"
+  }
+}
