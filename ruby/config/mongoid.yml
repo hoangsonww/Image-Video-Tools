@@ -1,0 +1,11 @@
+development:
+  clients:
+    default:
+      database: image_video_tools_dev
+      hosts:
+        - localhost:27017
+      options:
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
